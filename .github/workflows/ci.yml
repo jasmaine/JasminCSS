@@ -58,7 +58,7 @@ jobs:
 
       - name: Check JavaScript syntax
         run: |
-          for file in src/**/*.js; do
+          find src -name "*.js" -type f | while read file; do
             node --check "$file" 2>/dev/null || echo "Syntax error in $file"
           done
 

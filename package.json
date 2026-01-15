@@ -74,17 +74,17 @@
   "dependencies": {
     "chokidar": "^3.5.3",
     "commander": "^11.1.0",
-    "fast-glob": "^3.3.2",
-    "picocolors": "^1.0.0",
-    "postcss": "^8.4.32",
     "cssnano": "^6.0.2",
-    "inquirer": "^9.2.12"
+    "fast-glob": "^3.3.2",
+    "inquirer": "^9.2.12",
+    "picocolors": "^1.0.0",
+    "postcss": "^8.4.32"
   },
   "devDependencies": {
-    "esbuild": "^0.19.10",
     "@playwright/test": "^1.40.0",
+    "esbuild": "^0.19.10",
     "serve": "^14.2.0",
-    "vitepress": "^1.0.0"
+    "vitepress": "^1.6.4"
   },
   "peerDependencies": {
     "next": ">=13.0.0",

@@ -1,6 +1,6 @@
 # JasminCSS 🌸
 
-A modern, future-proof CSS framework with TailwindCSS-inspired utilities, Studio Pasarella design philosophy, and powerful CLI tooling.
+A modern, future-proof CSS framework with design philosophy, and powerful CLI tooling.
 
 ## Features
 

@@ -123,22 +123,21 @@ function generateResponsiveUtilities(config, selectedUtilities, usedClasses, inc
 
 function generateStateUtilities(config, selectedUtilities, usedClasses, includeAll) {
   const states = {
-    hover: '&:hover',
-    focus: '&:focus',
-    'focus-visible': '&:focus-visible',
-    'focus-within': '&:focus-within',
-    active: '&:active',
-    disabled: '&:disabled',
-    first: '&:first-child',
-    last: '&:last-child',
-    odd: '&:nth-child(odd)',
-    even: '&:nth-child(even)',
-    'group-hover': '.group:hover &'
+    hover: 'hover',
+    focus: 'focus',
+    'focus-visible': 'focus-visible',
+    'focus-within': 'focus-within',
+    active: 'active',
+    disabled: 'disabled',
+    first: 'first-child',
+    last: 'last-child',
+    odd: 'nth-child(odd)',
+    even: 'nth-child(even)'
   };
 
   const parts = ['\n/* ==================== STATE VARIANTS ==================== */'];
 
-  for (const [state, selector] of Object.entries(states)) {
+  for (const [state, pseudoClass] of Object.entries(states)) {
     const stateClasses = [];
 
     for (const utilityName of selectedUtilities) {
@@ -148,23 +147,19 @@ function generateStateUtilities(config, selectedUtilities, usedClasses, includeA
       const { classes } = generator(config);
 
       for (const cls of classes) {
+        // Skip classes that contain media queries or complex selectors
+        if (cls.css.includes('@media') || cls.css.includes('@keyframes')) continue;
+
         const stateClassName = `${state}\\:${cls.name}`;
         const shouldInclude = includeAll ||
           !usedClasses ||
           usedClasses.has(`${state}:${cls.name}`);
 
         if (shouldInclude) {
-          const stateCSS = cls.css
-            .replace(new RegExp(`\\.${escapeRegex(cls.name)}`, 'g'), `.${stateClassName}`)
-            .replace(/\{/, selector.startsWith('.group') ?
-              `{ /* ${state} */ ` :
-              `:${state.replace('focus-', 'focus-')} {`
-            );
-
-          if (selector.startsWith('.group')) {
-            stateClasses.push(`.group:hover .${stateClassName.replace('\\:', '\\:')} ${cls.css.match(/\{([^}]+)\}/)[0]}`);
-          } else {
-            stateClasses.push(`.${stateClassName}:${state.replace('-', '-')} ${cls.css.match(/\{([^}]+)\}/)[0]}`);
+          // Extract properties from simple CSS rules only
+          const propsMatch = cls.css.match(/\{([^{}]+)\}/);
+          if (propsMatch) {
+            stateClasses.push(`.${stateClassName}:${pseudoClass} {${propsMatch[1]}}`);
           }
         }
       }
@@ -176,9 +171,39 @@ function generateStateUtilities(config, selectedUtilities, usedClasses, includeA
     }
   }
 
+  // Group hover variant
+  parts.push('\n/* group-hover variants */');
+  const groupHoverClasses = [];
+  for (const utilityName of selectedUtilities) {
+    const generator = utilityGenerators[utilityName];
+    if (!generator) continue;
+
+    const { classes } = generator(config);
+
+    for (const cls of classes) {
+      if (cls.css.includes('@media') || cls.css.includes('@keyframes')) continue;
+
+      const stateClassName = `group-hover\\:${cls.name}`;
+      const shouldInclude = includeAll ||
+        !usedClasses ||
+        usedClasses.has(`group-hover:${cls.name}`);
+
+      if (shouldInclude) {
+        const propsMatch = cls.css.match(/\{([^{}]+)\}/);
+        if (propsMatch) {
+          groupHoverClasses.push(`.group:hover .${stateClassName} {${propsMatch[1]}}`);
+        }
+      }
+    }
+  }
+  if (groupHoverClasses.length > 0) {
+    parts.push(groupHoverClasses.join('\n'));
+  }
+
   // Dark mode variant
   if (config.darkMode) {
     parts.push('\n/* dark mode variants */');
+    const darkClasses = [];
     for (const utilityName of selectedUtilities) {
       const generator = utilityGenerators[utilityName];
       if (!generator) continue;
@@ -186,15 +211,23 @@ function generateStateUtilities(config, selectedUtilities, usedClasses, includeA
       const { classes } = generator(config);
 
       for (const cls of classes) {
+        if (cls.css.includes('@media') || cls.css.includes('@keyframes')) continue;
+
         const darkClassName = `dark\\:${cls.name}`;
         const shouldInclude = includeAll ||
           !usedClasses ||
           usedClasses.has(`dark:${cls.name}`);
 
         if (shouldInclude) {
-          parts.push(`.dark .${darkClassName} ${cls.css.match(/\{([^}]+)\}/)?.[0] || '{}'}`);
+          const propsMatch = cls.css.match(/\{([^{}]+)\}/);
+          if (propsMatch) {
+            darkClasses.push(`.dark .${darkClassName} {${propsMatch[1]}}`);
+          }
         }
       }
+    }
+    if (darkClasses.length > 0) {
+      parts.push(darkClasses.join('\n'));
     }
   }
 

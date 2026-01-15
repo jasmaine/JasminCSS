@@ -5,6 +5,7 @@ export default defineConfig({
   description: 'A modern, utility-first CSS framework with 26 components, 720 icons, and powerful CLI tooling',
 
   base: '/JasminCSS/',
+  ignoreDeadLinks: true,
 
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],

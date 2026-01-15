@@ -1,7 +1,7 @@
 {
   "name": "jasmincss",
   "version": "1.0.0",
-  "description": "A modern, future-proof CSS framework with TailwindCSS-inspired utilities and Studio Pasarella design philosophy",
+  "description": "A modern, future-proof CSS framework with design philosophy",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",

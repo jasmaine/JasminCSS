@@ -7,6 +7,7 @@ import { generateEffectUtilities } from './effects.js';
 import { generateAnimationUtilities } from './animations.js';
 import { generateTransformUtilities } from './transforms.js';
 import { generateFilterUtilities } from './filters.js';
+import { generateIconUtilities } from './icons.js';
 
 const utilityGenerators = {
   layout: generateLayoutUtilities,
@@ -16,7 +17,8 @@ const utilityGenerators = {
   effects: generateEffectUtilities,
   animations: generateAnimationUtilities,
   transforms: generateTransformUtilities,
-  filters: generateFilterUtilities
+  filters: generateFilterUtilities,
+  icons: generateIconUtilities
 };
 
 export function generateUtilities(config, options = {}) {

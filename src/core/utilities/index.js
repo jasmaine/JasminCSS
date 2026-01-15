@@ -8,6 +8,11 @@ import { generateAnimationUtilities } from './animations.js';
 import { generateTransformUtilities } from './transforms.js';
 import { generateFilterUtilities } from './filters.js';
 import { generateIconUtilities } from './icons.js';
+import { generateBackgroundUtilities } from './background.js';
+import { generateColumnUtilities } from './columns.js';
+import { generateScrollUtilities } from './scroll.js';
+import { generateSvgUtilities } from './svg.js';
+import { generateAccessibilityUtilities } from './accessibility.js';
 
 const utilityGenerators = {
   layout: generateLayoutUtilities,
@@ -18,7 +23,12 @@ const utilityGenerators = {
   animations: generateAnimationUtilities,
   transforms: generateTransformUtilities,
   filters: generateFilterUtilities,
-  icons: generateIconUtilities
+  icons: generateIconUtilities,
+  background: generateBackgroundUtilities,
+  columns: generateColumnUtilities,
+  scroll: generateScrollUtilities,
+  svg: generateSvgUtilities,
+  accessibility: generateAccessibilityUtilities
 };
 
 export function generateUtilities(config, options = {}) {

@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - JasminCSS Template</title>
+  <link rel="stylesheet" href="../../dist/jasmin.css">
+  <style>
+    :root {
+      --sidebar-width: 16rem;
+    }
+    .sidebar {
+      width: var(--sidebar-width);
+      min-height: 100vh;
+    }
+    .main-content {
+      margin-left: var(--sidebar-width);
+    }
+    @media (max-width: 1024px) {
+      .sidebar { display: none; }
+      .main-content { margin-left: 0; }
+    }
+    .stat-card {
+      background: linear-gradient(135deg, var(--j-primary) 0%, var(--j-secondary) 100%);
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <!-- Sidebar -->
+  <aside class="sidebar fixed top-0 left-0 bg-gray-900 text-white flex flex-col z-40">
+    <!-- Logo -->
+    <div class="p-6 border-b border-gray-800">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+          <span class="icon icon-box text-white"></span>
+        </div>
+        <span class="text-xl font-bold">Dashboard</span>
+      </a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="flex-1 p-4 overflow-y-auto">
+      <div class="mb-6">
+        <p class="text-xs uppercase text-gray-500 font-semibold mb-3 px-3">Main</p>
+        <ul class="space-y-1">
+          <li>
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-gray-800 text-white">
+              <span class="icon icon-home"></span>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white transition">
+              <span class="icon icon-chart"></span>
+              <span>Analytics</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white transition">
+              <span class="icon icon-users"></span>
+              <span>Customers</span>
+              <span class="ml-auto bg-primary text-white text-xs px-2 py-0.5 rounded-full">12</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white transition">
+              <span class="icon icon-shopping-cart"></span>
+              <span>Orders</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white transition">
+              <span class="icon icon-package"></span>
+              <span>Products</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="mb-6">
+        <p class="text-xs uppercase text-gray-500 font-semibold mb-3 px-3">Settings</p>
+        <ul class="space-y-1">
+          <li>
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white transition">
+              <span class="icon icon-settings"></span>
+              <span>Settings</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white transition">
+              <span class="icon icon-help-circle"></span>
+              <span>Help</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- User -->
+    <div class="p-4 border-t border-gray-800">
+      <div class="flex items-center gap-3">
+        <div class="avatar">
+          <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold">JD</div>
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="font-medium text-sm truncate">John Doe</p>
+          <p class="text-xs text-gray-500 truncate">john@example.com</p>
+        </div>
+        <button class="btn btn-ghost btn-sm text-gray-400">
+          <span class="icon icon-log-out"></span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="main-content min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-30">
+      <div class="px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-4">
+          <button class="lg:hidden btn btn-ghost" data-offcanvas-target="#mobile-sidebar">
+            <span class="icon icon-menu"></span>
+          </button>
+          <div class="relative">
+            <span class="icon icon-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></span>
+            <input type="search" class="form-control pl-10 w-64" placeholder="Search...">
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <button class="btn btn-ghost relative">
+            <span class="icon icon-bell"></span>
+            <span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+          </button>
+          <button class="btn btn-ghost">
+            <span class="icon icon-message-square"></span>
+          </button>
+          <div class="dropdown" data-dropdown>
+            <button class="flex items-center gap-2 dropdown-toggle">
+              <div class="avatar avatar-sm">
+                <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-sm font-bold">JD</div>
+              </div>
+              <span class="icon icon-chevron-down text-gray-400"></span>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end mt-2">
+              <a href="#" class="dropdown-item">
+                <span class="icon icon-user mr-2"></span> Profile
+              </a>
+              <a href="#" class="dropdown-item">
+                <span class="icon icon-settings mr-2"></span> Settings
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item text-error">
+                <span class="icon icon-log-out mr-2"></span> Logout
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <main class="p-6">
+      <!-- Page Title -->
+      <div class="mb-8">
+        <h1 class="text-2xl font-bold text-gray-900">Dashboard</h1>
+        <p class="text-gray-500">Welcome back, John! Here's what's happening.</p>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
+        <div class="card stat-card text-white">
+          <div class="card-body p-6">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <p class="text-white/70 text-sm">Total Revenue</p>
+                <p class="text-3xl font-bold mt-1">$45,231</p>
+              </div>
+              <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
+                <span class="icon icon-dollar-sign"></span>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 text-sm">
+              <span class="bg-white/20 px-2 py-0.5 rounded text-xs">+12.5%</span>
+              <span class="text-white/70">vs last month</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card bg-white">
+          <div class="card-body p-6">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <p class="text-gray-500 text-sm">Orders</p>
+                <p class="text-3xl font-bold mt-1 text-gray-900">1,234</p>
+              </div>
+              <div class="w-12 h-12 bg-success/10 rounded-lg flex items-center justify-center text-success">
+                <span class="icon icon-shopping-cart"></span>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 text-sm">
+              <span class="text-success">+8.2%</span>
+              <span class="text-gray-500">vs last month</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card bg-white">
+          <div class="card-body p-6">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <p class="text-gray-500 text-sm">Customers</p>
+                <p class="text-3xl font-bold mt-1 text-gray-900">8,549</p>
+              </div>
+              <div class="w-12 h-12 bg-info/10 rounded-lg flex items-center justify-center text-info">
+                <span class="icon icon-users"></span>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 text-sm">
+              <span class="text-success">+5.7%</span>
+              <span class="text-gray-500">vs last month</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card bg-white">
+          <div class="card-body p-6">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <p class="text-gray-500 text-sm">Conversion</p>
+                <p class="text-3xl font-bold mt-1 text-gray-900">3.24%</p>
+              </div>
+              <div class="w-12 h-12 bg-warning/10 rounded-lg flex items-center justify-center text-warning">
+                <span class="icon icon-trending-up"></span>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 text-sm">
+              <span class="text-error">-2.1%</span>
+              <span class="text-gray-500">vs last month</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts & Tables Row -->
+      <div class="grid xl:grid-cols-3 gap-6 mb-8">
+        <!-- Chart Placeholder -->
+        <div class="xl:col-span-2 card bg-white">
+          <div class="card-header flex justify-between items-center">
+            <h3 class="font-semibold">Revenue Overview</h3>
+            <div class="dropdown" data-dropdown>
+              <button class="btn btn-sm btn-ghost dropdown-toggle">
+                Last 7 days
+                <span class="icon icon-chevron-down ml-1"></span>
+              </button>
+              <div class="dropdown-menu dropdown-menu-end">
+                <a href="#" class="dropdown-item">Last 7 days</a>
+                <a href="#" class="dropdown-item">Last 30 days</a>
+                <a href="#" class="dropdown-item">Last 90 days</a>
+              </div>
+            </div>
+          </div>
+          <div class="card-body p-6">
+            <div class="h-64 bg-gray-50 rounded-lg flex items-center justify-center text-gray-400">
+              <div class="text-center">
+                <span class="icon icon-bar-chart-2 text-4xl mb-2 block"></span>
+                <p>Chart placeholder</p>
+                <p class="text-sm">Integrate with Chart.js or similar</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="card bg-white">
+          <div class="card-header">
+            <h3 class="font-semibold">Recent Activity</h3>
+          </div>
+          <div class="card-body p-0">
+            <div class="divide-y">
+              <div class="flex items-start gap-4 p-4">
+                <div class="w-10 h-10 bg-success/10 rounded-full flex items-center justify-center text-success flex-shrink-0">
+                  <span class="icon icon-check"></span>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <p class="font-medium text-sm">Order #1234 completed</p>
+                  <p class="text-xs text-gray-500">2 minutes ago</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4 p-4">
+                <div class="w-10 h-10 bg-info/10 rounded-full flex items-center justify-center text-info flex-shrink-0">
+                  <span class="icon icon-user-plus"></span>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <p class="font-medium text-sm">New customer registered</p>
+                  <p class="text-xs text-gray-500">15 minutes ago</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4 p-4">
+                <div class="w-10 h-10 bg-warning/10 rounded-full flex items-center justify-center text-warning flex-shrink-0">
+                  <span class="icon icon-alert-triangle"></span>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <p class="font-medium text-sm">Low stock alert: Widget X</p>
+                  <p class="text-xs text-gray-500">1 hour ago</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4 p-4">
+                <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary flex-shrink-0">
+                  <span class="icon icon-message-square"></span>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <p class="font-medium text-sm">New review received</p>
+                  <p class="text-xs text-gray-500">3 hours ago</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer text-center">
+            <a href="#" class="text-primary text-sm font-medium">View all activity</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Orders Table -->
+      <div class="card bg-white">
+        <div class="card-header flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <h3 class="font-semibold">Recent Orders</h3>
+          <div class="flex gap-2">
+            <input type="search" class="form-control form-control-sm w-48" placeholder="Search orders...">
+            <button class="btn btn-sm btn-primary">
+              <span class="icon icon-plus mr-1"></span> New Order
+            </button>
+          </div>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th class="w-12">
+                  <input type="checkbox" class="form-checkbox">
+                </th>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Product</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th class="w-12"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input type="checkbox" class="form-checkbox"></td>
+                <td class="font-medium">#ORD-7352</td>
+                <td>
+                  <div class="flex items-center gap-3">
+                    <div class="avatar avatar-sm">
+                      <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-xs font-bold">JD</div>
+                    </div>
+                    <div>
+                      <p class="font-medium">John Doe</p>
+                      <p class="text-xs text-gray-500">john@example.com</p>
+                    </div>
+                  </div>
+                </td>
+                <td>Premium Widget</td>
+                <td class="font-medium">$299.00</td>
+                <td><span class="badge badge-success">Completed</span></td>
+                <td class="text-gray-500">Jan 12, 2024</td>
+                <td>
+                  <div class="dropdown" data-dropdown>
+                    <button class="btn btn-sm btn-ghost dropdown-toggle">
+                      <span class="icon icon-more-vertical"></span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end">
+                      <a href="#" class="dropdown-item">View</a>
+                      <a href="#" class="dropdown-item">Edit</a>
+                      <div class="dropdown-divider"></div>
+                      <a href="#" class="dropdown-item text-error">Delete</a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" class="form-checkbox"></td>
+                <td class="font-medium">#ORD-7351</td>
+                <td>
+                  <div class="flex items-center gap-3">
+                    <div class="avatar avatar-sm">
+                      <div class="w-8 h-8 rounded-full bg-pink-500 flex items-center justify-center text-white text-xs font-bold">SJ</div>
+                    </div>
+                    <div>
+                      <p class="font-medium">Sarah Johnson</p>
+                      <p class="text-xs text-gray-500">sarah@example.com</p>
+                    </div>
+                  </div>
+                </td>
+                <td>Basic Plan</td>
+                <td class="font-medium">$49.00</td>
+                <td><span class="badge badge-warning">Pending</span></td>
+                <td class="text-gray-500">Jan 11, 2024</td>
+                <td>
+                  <div class="dropdown" data-dropdown>
+                    <button class="btn btn-sm btn-ghost dropdown-toggle">
+                      <span class="icon icon-more-vertical"></span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end">
+                      <a href="#" class="dropdown-item">View</a>
+                      <a href="#" class="dropdown-item">Edit</a>
+                      <div class="dropdown-divider"></div>
+                      <a href="#" class="dropdown-item text-error">Delete</a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" class="form-checkbox"></td>
+                <td class="font-medium">#ORD-7350</td>
+                <td>
+                  <div class="flex items-center gap-3">
+                    <div class="avatar avatar-sm">
+                      <div class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white text-xs font-bold">MS</div>
+                    </div>
+                    <div>
+                      <p class="font-medium">Mike Smith</p>
+                      <p class="text-xs text-gray-500">mike@example.com</p>
+                    </div>
+                  </div>
+                </td>
+                <td>Enterprise License</td>
+                <td class="font-medium">$999.00</td>
+                <td><span class="badge badge-success">Completed</span></td>
+                <td class="text-gray-500">Jan 10, 2024</td>
+                <td>
+                  <div class="dropdown" data-dropdown>
+                    <button class="btn btn-sm btn-ghost dropdown-toggle">
+                      <span class="icon icon-more-vertical"></span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end">
+                      <a href="#" class="dropdown-item">View</a>
+                      <a href="#" class="dropdown-item">Edit</a>
+                      <div class="dropdown-divider"></div>
+                      <a href="#" class="dropdown-item text-error">Delete</a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" class="form-checkbox"></td>
+                <td class="font-medium">#ORD-7349</td>
+                <td>
+                  <div class="flex items-center gap-3">
+                    <div class="avatar avatar-sm">
+                      <div class="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center text-white text-xs font-bold">EW</div>
+                    </div>
+                    <div>
+                      <p class="font-medium">Emily Wilson</p>
+                      <p class="text-xs text-gray-500">emily@example.com</p>
+                    </div>
+                  </div>
+                </td>
+                <td>Pro Widget</td>
+                <td class="font-medium">$149.00</td>
+                <td><span class="badge badge-error">Cancelled</span></td>
+                <td class="text-gray-500">Jan 9, 2024</td>
+                <td>
+                  <div class="dropdown" data-dropdown>
+                    <button class="btn btn-sm btn-ghost dropdown-toggle">
+                      <span class="icon icon-more-vertical"></span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end">
+                      <a href="#" class="dropdown-item">View</a>
+                      <a href="#" class="dropdown-item">Edit</a>
+                      <div class="dropdown-divider"></div>
+                      <a href="#" class="dropdown-item text-error">Delete</a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" class="form-checkbox"></td>
+                <td class="font-medium">#ORD-7348</td>
+                <td>
+                  <div class="flex items-center gap-3">
+                    <div class="avatar avatar-sm">
+                      <div class="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center text-white text-xs font-bold">AB</div>
+                    </div>
+                    <div>
+                      <p class="font-medium">Alex Brown</p>
+                      <p class="text-xs text-gray-500">alex@example.com</p>
+                    </div>
+                  </div>
+                </td>
+                <td>Starter Kit</td>
+                <td class="font-medium">$29.00</td>
+                <td><span class="badge badge-info">Processing</span></td>
+                <td class="text-gray-500">Jan 8, 2024</td>
+                <td>
+                  <div class="dropdown" data-dropdown>
+                    <button class="btn btn-sm btn-ghost dropdown-toggle">
+                      <span class="icon icon-more-vertical"></span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end">
+                      <a href="#" class="dropdown-item">View</a>
+                      <a href="#" class="dropdown-item">Edit</a>
+                      <div class="dropdown-divider"></div>
+                      <a href="#" class="dropdown-item text-error">Delete</a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer flex justify-between items-center">
+          <p class="text-sm text-gray-500">Showing 1-5 of 100 orders</p>
+          <div class="flex gap-1">
+            <button class="btn btn-sm btn-ghost" disabled>&laquo; Prev</button>
+            <button class="btn btn-sm btn-primary">1</button>
+            <button class="btn btn-sm btn-ghost">2</button>
+            <button class="btn btn-sm btn-ghost">3</button>
+            <button class="btn btn-sm btn-ghost">Next &raquo;</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Mobile Sidebar -->
+  <div class="offcanvas offcanvas-start lg:hidden" data-offcanvas id="mobile-sidebar">
+    <div class="offcanvas-header border-b border-gray-200">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+          <span class="icon icon-box text-white"></span>
+        </div>
+        <span class="text-xl font-bold">Dashboard</span>
+      </div>
+      <button class="btn btn-ghost btn-sm" data-offcanvas-close>&times;</button>
+    </div>
+    <div class="offcanvas-body p-4">
+      <nav class="space-y-1">
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary text-white">
+          <span class="icon icon-home"></span>
+          <span>Dashboard</span>
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">
+          <span class="icon icon-chart"></span>
+          <span>Analytics</span>
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">
+          <span class="icon icon-users"></span>
+          <span>Customers</span>
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">
+          <span class="icon icon-shopping-cart"></span>
+          <span>Orders</span>
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">
+          <span class="icon icon-package"></span>
+          <span>Products</span>
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">
+          <span class="icon icon-settings"></span>
+          <span>Settings</span>
+        </a>
+      </nav>
+    </div>
+  </div>
+
+  <script type="module">
+    import Jasmin from '../../src/js/index.js';
+    Jasmin.autoInit();
+  </script>
+</body>
+</html>

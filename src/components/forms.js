@@ -51,13 +51,22 @@ textarea.form-control {
   resize: vertical;
 }
 
-/* Select */
+/* Select - Same height as text inputs */
 select.form-control {
+  height: calc(2.5rem + 2px); /* Match text input height exactly */
   padding-right: 2.5rem;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
   background-position: right 0.5rem center;
   background-repeat: no-repeat;
   background-size: 1.5em 1.5em;
+}
+
+select.form-control-sm {
+  height: calc(2rem + 2px);
+}
+
+select.form-control-lg {
+  height: calc(3rem + 2px);
 }
 
 /* File Input */
@@ -274,6 +283,126 @@ input[type="range"].form-control::-webkit-slider-thumb:hover {
 .form-switch-input:focus {
   outline: none;
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--j-primary) 20%, transparent);
+}
+
+.form-switch-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Switch Sizes */
+.form-switch-sm .form-switch-input {
+  width: 2rem;
+  height: 1.125rem;
+}
+
+.form-switch-sm .form-switch-input::before {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+.form-switch-sm .form-switch-input:checked::before {
+  transform: translateX(0.875rem);
+}
+
+.form-switch-lg .form-switch-input {
+  width: 3.5rem;
+  height: 2rem;
+}
+
+.form-switch-lg .form-switch-input::before {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.form-switch-lg .form-switch-input:checked::before {
+  transform: translateX(1.5rem);
+}
+
+/* Switch Colors */
+.form-switch-secondary .form-switch-input:checked {
+  background-color: var(--j-secondary);
+}
+
+.form-switch-secondary .form-switch-input:focus {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--j-secondary) 20%, transparent);
+}
+
+.form-switch-success .form-switch-input:checked {
+  background-color: var(--j-success);
+}
+
+.form-switch-success .form-switch-input:focus {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--j-success) 20%, transparent);
+}
+
+.form-switch-warning .form-switch-input:checked {
+  background-color: var(--j-warning);
+}
+
+.form-switch-warning .form-switch-input:focus {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--j-warning) 20%, transparent);
+}
+
+.form-switch-error .form-switch-input:checked {
+  background-color: var(--j-error);
+}
+
+.form-switch-error .form-switch-input:focus {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--j-error) 20%, transparent);
+}
+
+.form-switch-info .form-switch-input:checked {
+  background-color: var(--j-info);
+}
+
+.form-switch-info .form-switch-input:focus {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--j-info) 20%, transparent);
+}
+
+/* Switch with Label Inside */
+.form-switch-labeled .form-switch-input {
+  width: 4rem;
+}
+
+.form-switch-labeled .form-switch-input::after {
+  content: "OFF";
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: var(--j-text-muted);
+}
+
+.form-switch-labeled .form-switch-input:checked::after {
+  content: "ON";
+  left: 0.5rem;
+  right: auto;
+  color: white;
+}
+
+/* Switch with Icons */
+.form-switch-icon .form-switch-input::before {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+}
+
+/* Square Switch */
+.form-switch-square .form-switch-input {
+  border-radius: var(--j-radius-default, 0.375rem);
+}
+
+.form-switch-square .form-switch-input::before {
+  border-radius: var(--j-radius-sm, 0.25rem);
+}
+
+/* Glow Switch */
+.form-switch-glow .form-switch-input:checked {
+  box-shadow: 0 0 15px var(--j-primary);
 }
 
 /* Input Group */

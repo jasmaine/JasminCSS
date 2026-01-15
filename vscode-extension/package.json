@@ -1,0 +1,82 @@
+{
+  "name": "jasmincss-intellisense",
+  "displayName": "JasminCSS IntelliSense",
+  "description": "Intelligent autocomplete for JasminCSS classes",
+  "version": "1.0.0",
+  "publisher": "jasmincss",
+  "icon": "icon.png",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other",
+    "Snippets"
+  ],
+  "keywords": [
+    "css",
+    "jasmincss",
+    "autocomplete",
+    "intellisense",
+    "tailwind"
+  ],
+  "activationEvents": [
+    "onLanguage:html",
+    "onLanguage:javascript",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact",
+    "onLanguage:vue",
+    "onLanguage:svelte",
+    "onLanguage:php",
+    "onLanguage:erb",
+    "onLanguage:blade"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "JasminCSS IntelliSense",
+      "properties": {
+        "jasmincss.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable JasminCSS IntelliSense"
+        },
+        "jasmincss.includeLanguages": {
+          "type": "object",
+          "default": {},
+          "description": "Additional languages to enable (e.g., {\"rust\": \"html\"})"
+        },
+        "jasmincss.emmetCompletions": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable Emmet-style completions"
+        },
+        "jasmincss.showPixelEquivalents": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show pixel equivalents for rem values"
+        },
+        "jasmincss.rootFontSize": {
+          "type": "number",
+          "default": 16,
+          "description": "Root font size for pixel calculations"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "esbuild src/extension.js --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node",
+    "watch": "npm run build -- --watch",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "esbuild": "^0.19.0",
+    "vsce": "^2.15.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jasmaine/JasminCSS"
+  },
+  "license": "MIT"
+}

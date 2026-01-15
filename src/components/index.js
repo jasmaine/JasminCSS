@@ -10,6 +10,20 @@ import { generateAvatarStyles } from './avatars.js';
 import { generateTooltipStyles } from './tooltips.js';
 import { generateProgressStyles } from './progress.js';
 import { generateSkeletonStyles } from './skeleton.js';
+import { generateDropdownStyles } from './dropdown.js';
+import { generateAccordionStyles } from './accordion.js';
+import { generateChipStyles } from './chips.js';
+import { generateOffcanvasStyles } from './offcanvas.js';
+import { generateCarouselStyles } from './carousel.js';
+import { generateStepperStyles } from './stepper.js';
+import { generateTimelineStyles } from './timeline.js';
+import { generateRatingStyles } from './rating.js';
+import { generateUploadStyles } from './upload.js';
+import { generateSpinnerStyles } from './spinner.js';
+import { generatePopoverStyles } from './popover.js';
+import { generateCommandPaletteStyles } from './command-palette.js';
+import { generateDatepickerStyles } from './datepicker.js';
+import { generateTimepickerStyles } from './timepicker.js';
 
 const componentGenerators = {
   buttons: generateButtonStyles,
@@ -23,7 +37,21 @@ const componentGenerators = {
   avatars: generateAvatarStyles,
   tooltips: generateTooltipStyles,
   progress: generateProgressStyles,
-  skeleton: generateSkeletonStyles
+  skeleton: generateSkeletonStyles,
+  dropdown: generateDropdownStyles,
+  accordion: generateAccordionStyles,
+  chips: generateChipStyles,
+  offcanvas: generateOffcanvasStyles,
+  carousel: generateCarouselStyles,
+  stepper: generateStepperStyles,
+  timeline: generateTimelineStyles,
+  rating: generateRatingStyles,
+  upload: generateUploadStyles,
+  spinner: generateSpinnerStyles,
+  popover: generatePopoverStyles,
+  'command-palette': generateCommandPaletteStyles,
+  datepicker: generateDatepickerStyles,
+  timepicker: generateTimepickerStyles
 };
 
 export const components = Object.keys(componentGenerators);

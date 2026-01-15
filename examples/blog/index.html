@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - JasminCSS Template</title>
+  <link rel="stylesheet" href="../../dist/jasmin.css">
+  <style>
+    .prose {
+      max-width: 65ch;
+    }
+    .prose p {
+      margin-bottom: 1.5rem;
+      line-height: 1.75;
+    }
+    .prose h2 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+    .prose ul, .prose ol {
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+    }
+    .prose li {
+      margin-bottom: 0.5rem;
+    }
+    .prose blockquote {
+      border-left: 4px solid var(--j-primary);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--j-gray-600);
+    }
+    .prose code {
+      background: var(--j-gray-100);
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.25rem;
+      font-size: 0.875em;
+    }
+    .prose pre code {
+      background: none;
+      padding: 0;
+    }
+    .aspect-video {
+      aspect-ratio: 16 / 9;
+    }
+  </style>
+</head>
+<body class="bg-white">
+  <!-- Navigation -->
+  <nav class="bg-white border-b border-gray-100 sticky top-0 z-50">
+    <div class="container mx-auto px-6">
+      <div class="flex justify-between items-center h-16">
+        <a href="#" class="text-xl font-bold">
+          <span class="text-primary">Tech</span>Blog
+        </a>
+
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#" class="text-gray-600 hover:text-primary transition">Home</a>
+          <a href="#" class="text-gray-600 hover:text-primary transition">Articles</a>
+          <a href="#" class="text-gray-600 hover:text-primary transition">Categories</a>
+          <a href="#" class="text-gray-600 hover:text-primary transition">About</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <button class="btn btn-ghost">
+            <span class="icon icon-search"></span>
+          </button>
+          <button class="btn btn-primary hidden md:inline-flex">Subscribe</button>
+          <button class="md:hidden btn btn-ghost" data-offcanvas-target="#mobile-menu">
+            <span class="icon icon-menu"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="offcanvas offcanvas-end" data-offcanvas id="mobile-menu">
+    <div class="offcanvas-header">
+      <h5 class="text-lg font-bold">Menu</h5>
+      <button class="btn btn-ghost btn-sm" data-offcanvas-close>&times;</button>
+    </div>
+    <div class="offcanvas-body">
+      <nav class="flex flex-col gap-2">
+        <a href="#" class="py-2 text-lg font-medium">Home</a>
+        <a href="#" class="py-2 text-lg">Articles</a>
+        <a href="#" class="py-2 text-lg">Categories</a>
+        <a href="#" class="py-2 text-lg">About</a>
+      </nav>
+      <button class="btn btn-primary w-full mt-6">Subscribe</button>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-gray-50 to-gray-100 py-16 md:py-24">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl">
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Featured</span>
+        <h1 class="text-3xl md:text-5xl font-bold mt-4 mb-6 leading-tight">
+          The Complete Guide to Building Modern Web Applications
+        </h1>
+        <p class="text-gray-600 text-lg md:text-xl mb-8">
+          Learn how to build fast, scalable, and maintainable web applications using the latest technologies and best practices.
+        </p>
+        <div class="flex items-center gap-4">
+          <div class="avatar">
+            <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold">JD</div>
+          </div>
+          <div>
+            <p class="font-semibold">John Doe</p>
+            <p class="text-sm text-gray-500">Jan 15, 2024 · 12 min read</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="py-16">
+    <div class="container mx-auto px-6">
+      <div class="grid lg:grid-cols-3 gap-12">
+        <!-- Articles Grid -->
+        <div class="lg:col-span-2">
+          <h2 class="text-2xl font-bold mb-8">Latest Articles</h2>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <!-- Article Card -->
+            <article class="card overflow-hidden hover:shadow-lg transition-shadow">
+              <div class="aspect-video bg-gradient-to-br from-primary to-secondary"></div>
+              <div class="card-body p-6">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="badge badge-primary">Tutorial</span>
+                  <span class="text-sm text-gray-500">5 min read</span>
+                </div>
+                <h3 class="text-xl font-semibold mb-2 hover:text-primary transition">
+                  <a href="#">Getting Started with CSS Grid Layout</a>
+                </h3>
+                <p class="text-gray-600 mb-4">Master the fundamentals of CSS Grid and learn how to create complex layouts with ease.</p>
+                <div class="flex items-center gap-3">
+                  <div class="avatar avatar-sm">
+                    <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-xs font-bold">SJ</div>
+                  </div>
+                  <span class="text-sm text-gray-500">Sarah Johnson</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Article Card -->
+            <article class="card overflow-hidden hover:shadow-lg transition-shadow">
+              <div class="aspect-video bg-gradient-to-br from-success to-accent"></div>
+              <div class="card-body p-6">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="badge badge-success">Guide</span>
+                  <span class="text-sm text-gray-500">8 min read</span>
+                </div>
+                <h3 class="text-xl font-semibold mb-2 hover:text-primary transition">
+                  <a href="#">Building Accessible Web Forms</a>
+                </h3>
+                <p class="text-gray-600 mb-4">Learn best practices for creating forms that everyone can use, including people with disabilities.</p>
+                <div class="flex items-center gap-3">
+                  <div class="avatar avatar-sm">
+                    <div class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white text-xs font-bold">MS</div>
+                  </div>
+                  <span class="text-sm text-gray-500">Mike Smith</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Article Card -->
+            <article class="card overflow-hidden hover:shadow-lg transition-shadow">
+              <div class="aspect-video bg-gradient-to-br from-warning to-error"></div>
+              <div class="card-body p-6">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="badge badge-warning">Deep Dive</span>
+                  <span class="text-sm text-gray-500">15 min read</span>
+                </div>
+                <h3 class="text-xl font-semibold mb-2 hover:text-primary transition">
+                  <a href="#">JavaScript Performance Optimization</a>
+                </h3>
+                <p class="text-gray-600 mb-4">Discover techniques to make your JavaScript code faster and more efficient.</p>
+                <div class="flex items-center gap-3">
+                  <div class="avatar avatar-sm">
+                    <div class="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center text-white text-xs font-bold">EW</div>
+                  </div>
+                  <span class="text-sm text-gray-500">Emily Wilson</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Article Card -->
+            <article class="card overflow-hidden hover:shadow-lg transition-shadow">
+              <div class="aspect-video bg-gradient-to-br from-secondary to-info"></div>
+              <div class="card-body p-6">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="badge badge-info">News</span>
+                  <span class="text-sm text-gray-500">3 min read</span>
+                </div>
+                <h3 class="text-xl font-semibold mb-2 hover:text-primary transition">
+                  <a href="#">What's New in CSS 2024</a>
+                </h3>
+                <p class="text-gray-600 mb-4">A roundup of the latest CSS features landing in browsers this year.</p>
+                <div class="flex items-center gap-3">
+                  <div class="avatar avatar-sm">
+                    <div class="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center text-white text-xs font-bold">AB</div>
+                  </div>
+                  <span class="text-sm text-gray-500">Alex Brown</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Pagination -->
+          <div class="flex justify-center mt-12">
+            <div class="flex gap-1">
+              <button class="btn btn-ghost" disabled>&laquo;</button>
+              <button class="btn btn-primary">1</button>
+              <button class="btn btn-ghost">2</button>
+              <button class="btn btn-ghost">3</button>
+              <span class="btn btn-ghost cursor-default">...</span>
+              <button class="btn btn-ghost">10</button>
+              <button class="btn btn-ghost">&raquo;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-1">
+          <!-- Newsletter -->
+          <div class="card bg-gradient-to-br from-primary to-secondary text-white mb-8">
+            <div class="card-body p-6">
+              <h3 class="text-xl font-bold mb-2">Subscribe to Newsletter</h3>
+              <p class="text-white/80 mb-4">Get the latest articles delivered to your inbox.</p>
+              <form class="space-y-3">
+                <input type="email" class="form-control bg-white/10 border-white/20 text-white placeholder-white/60" placeholder="Your email">
+                <button class="btn bg-white text-primary w-full hover:bg-gray-100">Subscribe</button>
+              </form>
+              <p class="text-xs text-white/60 mt-3">No spam. Unsubscribe anytime.</p>
+            </div>
+          </div>
+
+          <!-- Categories -->
+          <div class="card mb-8">
+            <div class="card-header">
+              <h3 class="font-semibold">Categories</h3>
+            </div>
+            <div class="card-body p-0">
+              <ul class="divide-y">
+                <li>
+                  <a href="#" class="flex justify-between items-center px-6 py-3 hover:bg-gray-50 transition">
+                    <span>JavaScript</span>
+                    <span class="badge">24</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="flex justify-between items-center px-6 py-3 hover:bg-gray-50 transition">
+                    <span>CSS</span>
+                    <span class="badge">18</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="flex justify-between items-center px-6 py-3 hover:bg-gray-50 transition">
+                    <span>React</span>
+                    <span class="badge">15</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="flex justify-between items-center px-6 py-3 hover:bg-gray-50 transition">
+                    <span>Node.js</span>
+                    <span class="badge">12</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="flex justify-between items-center px-6 py-3 hover:bg-gray-50 transition">
+                    <span>TypeScript</span>
+                    <span class="badge">9</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Popular Posts -->
+          <div class="card mb-8">
+            <div class="card-header">
+              <h3 class="font-semibold">Popular Posts</h3>
+            </div>
+            <div class="card-body p-0">
+              <ul class="divide-y">
+                <li>
+                  <a href="#" class="flex gap-4 p-4 hover:bg-gray-50 transition">
+                    <div class="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-lg flex-shrink-0"></div>
+                    <div>
+                      <h4 class="font-medium text-sm line-clamp-2 mb-1">10 VS Code Extensions Every Developer Needs</h4>
+                      <p class="text-xs text-gray-500">Jan 10, 2024</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="flex gap-4 p-4 hover:bg-gray-50 transition">
+                    <div class="w-16 h-16 bg-gradient-to-br from-success to-accent rounded-lg flex-shrink-0"></div>
+                    <div>
+                      <h4 class="font-medium text-sm line-clamp-2 mb-1">Understanding React Server Components</h4>
+                      <p class="text-xs text-gray-500">Jan 8, 2024</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="flex gap-4 p-4 hover:bg-gray-50 transition">
+                    <div class="w-16 h-16 bg-gradient-to-br from-warning to-error rounded-lg flex-shrink-0"></div>
+                    <div>
+                      <h4 class="font-medium text-sm line-clamp-2 mb-1">The Future of Web Development in 2024</h4>
+                      <p class="text-xs text-gray-500">Jan 5, 2024</p>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Tags -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="font-semibold">Tags</h3>
+            </div>
+            <div class="card-body">
+              <div class="flex flex-wrap gap-2">
+                <a href="#" class="badge hover:bg-primary hover:text-white transition">javascript</a>
+                <a href="#" class="badge hover:bg-primary hover:text-white transition">css</a>
+                <a href="#" class="badge hover:bg-primary hover:text-white transition">react</a>
+                <a href="#" class="badge hover:bg-primary hover:text-white transition">node</a>
+                <a href="#" class="badge hover:bg-primary hover:text-white transition">typescript</a>
+                <a href="#" class="badge hover:bg-primary hover:text-white transition">tailwind</a>
+                <a href="#" class="badge hover:bg-primary hover:text-white transition">next.js</a>
+                <a href="#" class="badge hover:bg-primary hover:text-white transition">api</a>
+                <a href="#" class="badge hover:bg-primary hover:text-white transition">performance</a>
+                <a href="#" class="badge hover:bg-primary hover:text-white transition">testing</a>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- Single Article Section (Example) -->
+  <section class="py-16 bg-gray-50 border-t border-gray-100">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto">
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Article Preview</span>
+        <h2 class="text-3xl font-bold mt-4 mb-6">Sample Article Content</h2>
+
+        <div class="prose text-gray-700">
+          <p>
+            This is an example of how article content would be styled using JasminCSS. The framework provides all the utilities you need to create beautiful, readable content.
+          </p>
+
+          <h2 class="text-2xl font-bold text-gray-900">Getting Started</h2>
+          <p>
+            When building a blog with JasminCSS, you'll want to focus on readability and user experience. Here are some tips:
+          </p>
+
+          <ul class="list-disc">
+            <li>Use appropriate font sizes and line heights</li>
+            <li>Maintain good contrast between text and background</li>
+            <li>Add sufficient spacing between paragraphs</li>
+            <li>Use headings to structure your content</li>
+          </ul>
+
+          <blockquote>
+            "Good typography is invisible. Bad typography is everywhere." - Anonymous
+          </blockquote>
+
+          <p>
+            You can also include code snippets in your articles. Here's an example:
+          </p>
+
+          <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto"><code>const greeting = "Hello, World!";
+console.log(greeting);</code></pre>
+
+          <p>
+            JasminCSS makes it easy to create professional-looking blog posts with minimal custom CSS.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 py-12">
+    <div class="container mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <a href="#" class="text-xl font-bold text-white mb-4 block">
+            <span class="text-primary">Tech</span>Blog
+          </a>
+          <p class="text-sm">Sharing knowledge and insights about web development and technology.</p>
+        </div>
+
+        <div>
+          <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-white transition">Home</a></li>
+            <li><a href="#" class="hover:text-white transition">Articles</a></li>
+            <li><a href="#" class="hover:text-white transition">Categories</a></li>
+            <li><a href="#" class="hover:text-white transition">About</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-semibold mb-4">Categories</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-white transition">JavaScript</a></li>
+            <li><a href="#" class="hover:text-white transition">CSS</a></li>
+            <li><a href="#" class="hover:text-white transition">React</a></li>
+            <li><a href="#" class="hover:text-white transition">Node.js</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-semibold mb-4">Follow Us</h4>
+          <div class="flex gap-4">
+            <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition">
+              <span class="icon icon-twitter"></span>
+            </a>
+            <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition">
+              <span class="icon icon-github"></span>
+            </a>
+            <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition">
+              <span class="icon icon-linkedin"></span>
+            </a>
+            <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition">
+              <span class="icon icon-rss"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-800 pt-8 text-center text-sm">
+        <p>&copy; 2024 TechBlog. Built with JasminCSS.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import Jasmin from '../../src/js/index.js';
+    Jasmin.autoInit();
+  </script>
+</body>
+</html>

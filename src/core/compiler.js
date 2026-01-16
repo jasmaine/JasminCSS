@@ -109,20 +109,20 @@ export async function compileCSS(config, options = {}) {
   // 1. Base styles and CSS variables
   parts.push(generateBase(resolvedConfig));
 
-  // 2. Utility classes
-  const utilities = generateUtilities(resolvedConfig, {
-    usedClasses,
-    includeAll
-  });
-  parts.push(utilities.css);
-
-  // 3. Component styles (now with auto-detected components)
+  // 2. Component styles (before utilities so utilities can override)
   const components = generateComponents(resolvedConfig, {
     selected: selectedComponents,
     usedClasses,
     includeAll
   });
   parts.push(components.css);
+
+  // 3. Utility classes (last, so they can override components)
+  const utilities = generateUtilities(resolvedConfig, {
+    usedClasses,
+    includeAll
+  });
+  parts.push(utilities.css);
 
   // Combine all CSS
   let css = parts.join('\n\n');

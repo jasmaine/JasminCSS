@@ -1,6 +1,6 @@
 {
   "name": "jasmincss",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "description": "A modern, future-proof CSS framework with design philosophy",
   "main": "dist/index.js",

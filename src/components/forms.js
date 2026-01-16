@@ -481,7 +481,7 @@ input[type="range"].form-control::-webkit-slider-thumb:hover {
 
 .form-floating > .form-control:focus ~ .form-label,
 .form-floating > .form-control:not(:placeholder-shown) ~ .form-label {
-  transform: scale(0.85) translateY(-0.5rem));
+  transform: scale(0.85) translateY(-0.5rem);
   color: var(--j-primary);
 }
 

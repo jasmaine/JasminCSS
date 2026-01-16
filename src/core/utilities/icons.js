@@ -1,5 +1,4 @@
 // Auto-generated icon utilities for JasminCSS
-// Icons from css.gg (https://css.gg)
 
 // Icon SVG data (mask-image URLs)
 const iconData = {

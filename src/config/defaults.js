@@ -36,7 +36,10 @@ export const defaultConfig = {
       lg: '0.75rem',
       xl: '1rem',
       '2xl': '1.5rem',
-      full: '9999px'
+      full: '9999px',
+      // Component-specific border radius
+      buttons: '0.5rem',        // Separate radius for buttons
+      inputs: '0.5rem'          // Separate radius for form inputs, cards, etc.
     },
     shadows: {
       sm: '0 1px 2px 0 rgb(0 0 0 / 0.05)',

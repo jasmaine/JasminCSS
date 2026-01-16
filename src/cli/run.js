@@ -1,9 +1,12 @@
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import pc from 'picocolors';
 import chokidar from 'chokidar';
 import { compileCSS, scanForUsedClasses } from '../core/compiler.js';
 import { loadConfig } from '../config/loader.js';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export async function runCommand(task, options) {
   const cwd = process.cwd();
@@ -79,6 +82,21 @@ async function buildTask(config, outputDir, cwd, isProduction) {
   if (isProduction && minified) {
     fs.writeFileSync(minOutputPath, minified);
     console.log(pc.green(`✓ ${minOutputPath}`), pc.dim(`(${formatSize(minified.length)})`));
+  }
+
+  // Copy JavaScript files
+  const packageRoot = path.resolve(__dirname, '../../dist');
+  const jsFiles = ['jasmin.min.js', 'jasmin.js'];
+
+  for (const jsFile of jsFiles) {
+    const srcPath = path.join(packageRoot, jsFile);
+    const destPath = path.join(outputDir, jsFile);
+
+    if (fs.existsSync(srcPath)) {
+      fs.copyFileSync(srcPath, destPath);
+      const size = fs.statSync(destPath).size;
+      console.log(pc.green(`✓ ${destPath}`), pc.dim(`(${formatSize(size)})`));
+    }
   }
 
   const elapsed = Date.now() - startTime;

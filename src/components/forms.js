@@ -9,7 +9,7 @@ export function generateFormStyles(config) {
   color: var(--j-text);
   background-color: var(--j-bg);
   border: 1px solid var(--j-border);
-  border-radius: var(--j-radius-default, 0.5rem);
+  border-radius: var(--j-radius-inputs, var(--j-radius-default, 0.5rem));
   transition: border-color 150ms ease-in-out, box-shadow 150ms ease-in-out;
   appearance: none;
 }
@@ -393,7 +393,7 @@ input[type="range"].form-control::-webkit-slider-thumb:hover {
 
 /* Square Switch */
 .form-switch-square .form-switch-input {
-  border-radius: var(--j-radius-default, 0.375rem);
+  border-radius: var(--j-radius-inputs, var(--j-radius-default, 0.375rem));
 }
 
 .form-switch-square .form-switch-input::before {
@@ -439,12 +439,12 @@ input[type="range"].form-control::-webkit-slider-thumb:hover {
 
 .input-group-text:first-child {
   border-right: none;
-  border-radius: var(--j-radius-default, 0.5rem) 0 0 var(--j-radius-default, 0.5rem);
+  border-radius: var(--j-radius-inputs, 0.5rem) 0 0 var(--j-radius-inputs, 0.5rem);
 }
 
 .input-group-text:last-child {
   border-left: none;
-  border-radius: 0 var(--j-radius-default, 0.5rem) var(--j-radius-default, 0.5rem) 0;
+  border-radius: 0 var(--j-radius-inputs, 0.5rem) var(--j-radius-inputs, 0.5rem) 0;
 }
 
 .input-group > .btn:first-child {
@@ -481,7 +481,7 @@ input[type="range"].form-control::-webkit-slider-thumb:hover {
 
 .form-floating > .form-control:focus ~ .form-label,
 .form-floating > .form-control:not(:placeholder-shown) ~ .form-label {
-  transform: scale(0.85) translateY(-0.5rem);
+  transform: scale(0.85) translateY(-0.5rem));
   color: var(--j-primary);
 }
 
@@ -495,7 +495,7 @@ input[type="range"].form-control::-webkit-slider-thumb:hover {
 /* Fieldset */
 fieldset {
   border: 1px solid var(--j-border);
-  border-radius: var(--j-radius-default, 0.5rem);
+  border-radius: var(--j-radius-inputs, var(--j-radius-default, 0.5rem));
   padding: 1.5rem;
   margin-bottom: 1.5rem;
 }

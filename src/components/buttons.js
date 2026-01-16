@@ -9,7 +9,7 @@ export function generateButtonStyles(config) {
   font-size: 0.875rem;
   font-weight: 500;
   line-height: 1.25rem;
-  border-radius: var(--j-radius-default, 0.5rem);
+  border-radius: var(--j-radius-buttons, var(--j-radius-default, 0.5rem));
   border: 1px solid transparent;
   cursor: pointer;
   transition: all 150ms ease-in-out;

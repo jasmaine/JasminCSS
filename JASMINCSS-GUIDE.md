@@ -2,7 +2,7 @@
 
 > **Complete reference of all available utility classes and components**
 >
-> Generated automatically from JasminCSS v1.0.6
+> Generated automatically from JasminCSS v1.0.7
 
 ## Table of Contents
 
@@ -1017,6 +1017,8 @@
 | `rounded-xl` | `border-radius: 1rem;` |
 | `rounded-2xl` | `border-radius: 1.5rem;` |
 | `rounded-full` | `border-radius: 9999px;` |
+| `rounded-buttons` | `border-radius: 0.5rem;` |
+| `rounded-inputs` | `border-radius: 0.5rem;` |
 | `rounded-t-none` | `border-top-left-radius: 0; border-top-right-radius: 0;` |
 | `rounded-r-none` | `border-top-right-radius: 0; border-bottom-right-radius: 0;` |
 | `rounded-b-none` | `border-bottom-left-radius: 0; border-bottom-right-radius: 0;` |
@@ -1129,6 +1131,34 @@
 | `rounded-se-full` | `border-start-end-radius: 9999px;` |
 | `rounded-ee-full` | `border-end-end-radius: 9999px;` |
 | `rounded-es-full` | `border-end-start-radius: 9999px;` |
+| `rounded-t-buttons` | `border-top-left-radius: 0.5rem; border-top-right-radius: 0.5rem;` |
+| `rounded-r-buttons` | `border-top-right-radius: 0.5rem; border-bottom-right-radius: 0.5rem;` |
+| `rounded-b-buttons` | `border-bottom-left-radius: 0.5rem; border-bottom-right-radius: 0.5rem;` |
+| `rounded-l-buttons` | `border-top-left-radius: 0.5rem; border-bottom-left-radius: 0.5rem;` |
+| `rounded-tl-buttons` | `border-top-left-radius: 0.5rem;` |
+| `rounded-tr-buttons` | `border-top-right-radius: 0.5rem;` |
+| `rounded-br-buttons` | `border-bottom-right-radius: 0.5rem;` |
+| `rounded-bl-buttons` | `border-bottom-left-radius: 0.5rem;` |
+| `rounded-s-buttons` | `border-start-start-radius: 0.5rem; border-end-start-radius: 0.5rem;` |
+| `rounded-e-buttons` | `border-start-end-radius: 0.5rem; border-end-end-radius: 0.5rem;` |
+| `rounded-ss-buttons` | `border-start-start-radius: 0.5rem;` |
+| `rounded-se-buttons` | `border-start-end-radius: 0.5rem;` |
+| `rounded-ee-buttons` | `border-end-end-radius: 0.5rem;` |
+| `rounded-es-buttons` | `border-end-start-radius: 0.5rem;` |
+| `rounded-t-inputs` | `border-top-left-radius: 0.5rem; border-top-right-radius: 0.5rem;` |
+| `rounded-r-inputs` | `border-top-right-radius: 0.5rem; border-bottom-right-radius: 0.5rem;` |
+| `rounded-b-inputs` | `border-bottom-left-radius: 0.5rem; border-bottom-right-radius: 0.5rem;` |
+| `rounded-l-inputs` | `border-top-left-radius: 0.5rem; border-bottom-left-radius: 0.5rem;` |
+| `rounded-tl-inputs` | `border-top-left-radius: 0.5rem;` |
+| `rounded-tr-inputs` | `border-top-right-radius: 0.5rem;` |
+| `rounded-br-inputs` | `border-bottom-right-radius: 0.5rem;` |
+| `rounded-bl-inputs` | `border-bottom-left-radius: 0.5rem;` |
+| `rounded-s-inputs` | `border-start-start-radius: 0.5rem; border-end-start-radius: 0.5rem;` |
+| `rounded-e-inputs` | `border-start-end-radius: 0.5rem; border-end-end-radius: 0.5rem;` |
+| `rounded-ss-inputs` | `border-start-start-radius: 0.5rem;` |
+| `rounded-se-inputs` | `border-start-end-radius: 0.5rem;` |
+| `rounded-ee-inputs` | `border-end-end-radius: 0.5rem;` |
+| `rounded-es-inputs` | `border-end-start-radius: 0.5rem;` |
 | `border-0` | `border-width: 0px;` |
 | `border` | `border-width: 1px;` |
 | `border-2` | `border-width: 2px;` |
@@ -2393,6 +2423,6 @@ export default withJasminCSS({});
 
 ---
 
-**Total utility classes: 5,926**
+**Total utility classes: 5,956**
 
 Generated on 2026-01-16

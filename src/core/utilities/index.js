@@ -98,7 +98,8 @@ function generateResponsiveUtilities(config, selectedUtilities, usedClasses, inc
       const { classes } = generator(config);
 
       for (const cls of classes) {
-        const responsiveClassName = `${bp}\\:${cls.name}`;
+        const escapedBp = escapeCssSelector(bp);
+        const responsiveClassName = `${escapedBp}\\:${cls.name}`;
         const shouldInclude = includeAll ||
           !usedClasses ||
           usedClasses.has(`${bp}:${cls.name}`);
@@ -237,4 +238,14 @@ function generateStateUtilities(config, selectedUtilities, usedClasses, includeA
 
 function escapeRegex(string) {
   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+// Escape CSS class selector - handles leading digits
+function escapeCssSelector(name) {
+  // If starts with a digit, escape it (e.g., "2xl" -> "\\32 xl")
+  if (/^\d/.test(name)) {
+    const firstChar = name.charCodeAt(0).toString(16);
+    return `\\${firstChar} ${name.slice(1)}`;
+  }
+  return name;
 }

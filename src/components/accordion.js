@@ -149,24 +149,20 @@ export function generateAccordionStyles(config) {
 }
 
 /* Bordered - Each item has full border */
+.accordion-bordered {
+  border: none;
+  border-radius: 0;
+  gap: 0.5rem;
+}
+
 .accordion-bordered .accordion-item {
   border: 1px solid var(--j-border);
   border-radius: var(--j-radius-lg, 0.5rem);
-  margin-bottom: 0.5rem;
   overflow: hidden;
 }
 
 .accordion-bordered .accordion-item:last-child {
-  margin-bottom: 0;
   border-bottom: 1px solid var(--j-border);
-}
-
-.accordion-bordered .accordion-trigger {
-  border-radius: calc(var(--j-radius-lg, 0.5rem) - 1px);
-}
-
-.accordion-bordered .accordion-item.open .accordion-trigger {
-  border-radius: calc(var(--j-radius-lg, 0.5rem) - 1px) calc(var(--j-radius-lg, 0.5rem) - 1px) 0 0;
 }
 
 /* Separated - Items have gap between them */

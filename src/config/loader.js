@@ -78,7 +78,9 @@ function generateCssVariables(config) {
   // Spacing
   if (spacing) {
     Object.entries(spacing).forEach(([key, value]) => {
-      vars[`--j-space-${key}`] = value;
+      // Replace dots with underscores for valid CSS variable names
+      const safeKey = String(key).replace(/\./g, '_');
+      vars[`--j-space-${safeKey}`] = value;
     });
   }
 

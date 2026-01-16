@@ -13,6 +13,7 @@ import { generateColumnUtilities } from './columns.js';
 import { generateScrollUtilities } from './scroll.js';
 import { generateSvgUtilities } from './svg.js';
 import { generateAccessibilityUtilities } from './accessibility.js';
+import { generateBorderUtilities } from './borders.js';
 
 const utilityGenerators = {
   layout: generateLayoutUtilities,
@@ -28,7 +29,8 @@ const utilityGenerators = {
   columns: generateColumnUtilities,
   scroll: generateScrollUtilities,
   svg: generateSvgUtilities,
-  accessibility: generateAccessibilityUtilities
+  accessibility: generateAccessibilityUtilities,
+  borders: generateBorderUtilities
 };
 
 export function generateUtilities(config, options = {}) {

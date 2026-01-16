@@ -2,7 +2,7 @@
 
 > **Complete reference of all available utility classes and components**
 >
-> Generated automatically from JasminCSS v1.0.9
+> Generated automatically from JasminCSS v1.0.10
 
 ## Table of Contents
 

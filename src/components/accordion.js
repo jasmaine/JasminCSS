@@ -118,6 +118,8 @@ export function generateAccordionStyles(config) {
 
 .accordion-body {
   overflow: hidden;
+  padding: 1rem 1.25rem;
+  color: var(--j-text-muted);
 }
 
 .accordion-body-inner {
@@ -151,11 +153,20 @@ export function generateAccordionStyles(config) {
   border: 1px solid var(--j-border);
   border-radius: var(--j-radius-lg, 0.5rem);
   margin-bottom: 0.5rem;
+  overflow: hidden;
 }
 
 .accordion-bordered .accordion-item:last-child {
   margin-bottom: 0;
   border-bottom: 1px solid var(--j-border);
+}
+
+.accordion-bordered .accordion-trigger {
+  border-radius: calc(var(--j-radius-lg, 0.5rem) - 1px);
+}
+
+.accordion-bordered .accordion-item.open .accordion-trigger {
+  border-radius: calc(var(--j-radius-lg, 0.5rem) - 1px) calc(var(--j-radius-lg, 0.5rem) - 1px) 0 0;
 }
 
 /* Separated - Items have gap between them */

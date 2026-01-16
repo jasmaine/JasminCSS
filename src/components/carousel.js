@@ -240,7 +240,9 @@ export function generateCarouselStyles(config) {
   left: auto;
   transform: none;
   margin-top: 1rem;
-  justify-content: center;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Carousel Captions */

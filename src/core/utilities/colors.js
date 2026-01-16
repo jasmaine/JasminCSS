@@ -1,6 +1,75 @@
-export function generateColorUtilities(config) {
+/**
+ * Generate CSS for arbitrary color values detected in content
+ * Supports: bg-[#hex], text-[#hex], border-[#hex], etc.
+ */
+export function generateArbitraryColorCSS(usedClasses) {
+  if (!usedClasses) return '';
+
+  const cssRules = [];
+  const arbitraryColorPattern = /^(bg|text|border|ring|outline|fill|stroke|accent|caret|decoration|shadow|from|via|to)-\[#([a-fA-F0-9]{3,8})\]$/;
+
+  for (const className of usedClasses) {
+    const match = className.match(arbitraryColorPattern);
+    if (match) {
+      const [, prefix, hexValue] = match;
+      const hexColor = `#${hexValue}`;
+      // Escape brackets for CSS selector
+      const escapedClassName = className.replace('[', '\\[').replace(']', '\\]').replace('#', '\\#');
+
+      switch (prefix) {
+        case 'bg':
+          cssRules.push(`.${escapedClassName} { background-color: ${hexColor}; }`);
+          break;
+        case 'text':
+          cssRules.push(`.${escapedClassName} { color: ${hexColor}; }`);
+          break;
+        case 'border':
+          cssRules.push(`.${escapedClassName} { border-color: ${hexColor}; }`);
+          break;
+        case 'ring':
+          cssRules.push(`.${escapedClassName} { --j-ring-color: ${hexColor}; }`);
+          break;
+        case 'outline':
+          cssRules.push(`.${escapedClassName} { outline-color: ${hexColor}; }`);
+          break;
+        case 'fill':
+          cssRules.push(`.${escapedClassName} { fill: ${hexColor}; }`);
+          break;
+        case 'stroke':
+          cssRules.push(`.${escapedClassName} { stroke: ${hexColor}; }`);
+          break;
+        case 'accent':
+          cssRules.push(`.${escapedClassName} { accent-color: ${hexColor}; }`);
+          break;
+        case 'caret':
+          cssRules.push(`.${escapedClassName} { caret-color: ${hexColor}; }`);
+          break;
+        case 'decoration':
+          cssRules.push(`.${escapedClassName} { text-decoration-color: ${hexColor}; }`);
+          break;
+        case 'shadow':
+          cssRules.push(`.${escapedClassName} { --j-shadow-color: ${hexColor}; }`);
+          break;
+        case 'from':
+          cssRules.push(`.${escapedClassName} { --j-gradient-from: ${hexColor}; --j-gradient-stops: var(--j-gradient-from), var(--j-gradient-via, transparent), var(--j-gradient-to, transparent); }`);
+          break;
+        case 'via':
+          cssRules.push(`.${escapedClassName} { --j-gradient-via: ${hexColor}; --j-gradient-stops: var(--j-gradient-from, transparent), var(--j-gradient-via), var(--j-gradient-to, transparent); }`);
+          break;
+        case 'to':
+          cssRules.push(`.${escapedClassName} { --j-gradient-to: ${hexColor}; }`);
+          break;
+      }
+    }
+  }
+
+  return cssRules.join('\n');
+}
+
+export function generateColorUtilities(config, options = {}) {
   const classes = [];
   const { branding, colors } = config;
+  const { usedClasses } = options;
 
   // Brand colors (primary, secondary, accent, etc.)
   const brandColors = branding?.colors || {};
@@ -227,8 +296,11 @@ export function generateColorUtilities(config) {
     css: '.to-transparent { --j-gradient-to: transparent; }'
   });
 
+  // Generate arbitrary color CSS for JIT
+  const arbitraryCSS = generateArbitraryColorCSS(usedClasses);
+
   return {
-    css: classes.map(c => c.css).join('\n'),
+    css: classes.map(c => c.css).join('\n') + (arbitraryCSS ? '\n' + arbitraryCSS : ''),
     classes
   };
 }

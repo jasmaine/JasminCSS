@@ -1,75 +1,97 @@
-// JasminCSS Next.js Plugin
+// JasminCSS Next.js Plugin with JIT compilation
 import path from 'path';
 import fs from 'fs';
+import { fileURLToPath } from 'url';
+import { scanForUsedClasses, compileCSS } from '../core/compiler.js';
+import { loadConfig, resolveConfig } from '../config/loader.js';
+import { defaultConfig } from '../config/defaults.js';
+
+// Get __dirname for ESM
+let currentDir;
+try {
+  currentDir = path.dirname(fileURLToPath(import.meta.url));
+} catch {
+  // Fallback for CJS - esbuild will inject __dirname
+  currentDir = typeof __dirname !== 'undefined' ? __dirname : process.cwd();
+}
 
 /**
- * JasminCSS plugin for Next.js
+ * JasminCSS plugin for Next.js with JIT compilation
  *
- * @param {Object} pluginOptions
- * @param {string} pluginOptions.configPath - Path to jasmin.config.js
- * @param {boolean} pluginOptions.optimizeFonts - Optimize Google Fonts loading
+ * Automatically scans your source files and generates only the CSS you use.
  *
  * @example
  * // next.config.js
- * const withJasminCSS = require('jasmincss/plugin/nextjs');
+ * import withJasminCSS from 'jasmincss/plugins/next';
  *
- * module.exports = withJasminCSS({
- *   configPath: './jasmin.config.js',
- *   optimizeFonts: true
- * })({
+ * export default withJasminCSS({
  *   // your Next.js config
  * });
  */
-export default function withJasminCSS(pluginOptions = {}) {
-  const {
-    configPath = './jasmin.config.js',
-    optimizeFonts = true
-  } = pluginOptions;
+export default function withJasminCSS(nextConfig = {}) {
+  return {
+    ...nextConfig,
 
-  return (nextConfig = {}) => {
-    return {
-      ...nextConfig,
+    webpack(config, options) {
+      const { dev, isServer, dir } = options;
 
-      // Enable CSS optimization
-      experimental: {
-        ...nextConfig.experimental,
-        optimizeCss: true
-      },
+      // Find the rule that handles CSS
+      const cssRule = config.module.rules.find(
+        rule => rule.oneOf && Array.isArray(rule.oneOf)
+      );
 
-      // Optimize fonts if enabled
-      ...(optimizeFonts && {
-        optimizeFonts: true
-      }),
-
-      webpack(config, options) {
-        const { dev, isServer } = options;
-
-        // Add JasminCSS loader for .jasmin.css files
-        config.module.rules.push({
-          test: /\.jasmin\.css$/,
+      if (cssRule) {
+        // Add a rule to intercept jasmincss imports and replace with JIT-compiled CSS
+        cssRule.oneOf.unshift({
+          test: /node_modules[\\/]jasmincss[\\/]dist[\\/]jasmin(\.min)?\.css$/,
           use: [
+            // Use the default CSS loaders from Next.js
+            ...getDefaultCssLoaders(cssRule, isServer),
             {
-              loader: 'postcss-loader',
+              // Our custom JIT loader
+              loader: path.resolve(currentDir, 'jasmin-loader.js'),
               options: {
-                postcssOptions: {
-                  plugins: [
-                    ['cssnano', { preset: 'default' }]
-                  ]
-                }
+                dev,
+                projectDir: dir
               }
             }
           ]
         });
-
-        // Run user's webpack config if provided
-        if (typeof nextConfig.webpack === 'function') {
-          return nextConfig.webpack(config, options);
-        }
-
-        return config;
       }
-    };
+
+      // Run user's webpack config if provided
+      if (typeof nextConfig.webpack === 'function') {
+        return nextConfig.webpack(config, options);
+      }
+
+      return config;
+    }
   };
+}
+
+/**
+ * Extract default CSS loaders from Next.js config
+ */
+function getDefaultCssLoaders(cssRule, isServer) {
+  // Find a CSS rule to copy loaders from
+  const globalCssRule = cssRule.oneOf.find(
+    rule => rule.test && rule.test.toString().includes('\\.css')
+  );
+
+  if (globalCssRule && globalCssRule.use) {
+    // Filter out css-loader's modules option if present
+    return Array.isArray(globalCssRule.use)
+      ? globalCssRule.use.filter(loader => {
+          if (typeof loader === 'string') return true;
+          // Skip source file loaders, we provide our own source
+          if (loader.loader && loader.loader.includes('source-map-loader')) return false;
+          return true;
+        })
+      : [globalCssRule.use];
+  }
+
+  // Fallback: return empty array (Next.js will handle CSS)
+  return [];
 }
 
 /**

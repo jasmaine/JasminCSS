@@ -1,6 +1,6 @@
 {
   "name": "jasmincss",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "A modern, future-proof CSS framework with design philosophy",
   "main": "dist/index.js",
@@ -26,19 +26,21 @@
     "./css/min": "./dist/jasmin.min.css",
     "./dist/jasmin.css": "./dist/jasmin.css",
     "./dist/jasmin.min.css": "./dist/jasmin.min.css",
-    "./plugins/next": "./dist/plugin/nextjs.js",
-    "./plugins/vite": "./dist/plugin/vite.js",
-    "./plugin/nextjs": "./dist/plugin/nextjs.js",
-    "./plugin/vite": "./dist/plugin/vite.js"
+    "./plugins/next": "./dist/plugins/nextjs.mjs",
+    "./plugins/vite": "./dist/plugins/vite.mjs",
+    "./plugin/nextjs": "./dist/plugins/nextjs.mjs",
+    "./plugin/vite": "./dist/plugins/vite.mjs"
   },
   "files": [
     "dist",
     "bin",
-    "src"
+    "src",
+    "JASMINCSS-GUIDE.md"
   ],
   "scripts": {
-    "build": "node scripts/build.js",
+    "build": "node scripts/build.js && node scripts/generate-docs.js",
     "build:css": "node scripts/build-css.js",
+    "build:docs": "node scripts/generate-docs.js",
     "dev": "node scripts/dev.js",
     "test": "node --test tests/**/*.test.js",
     "test:browser": "npx playwright test --config=tests/browser/playwright.config.js",
@@ -48,7 +50,8 @@
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "postinstall": "echo '\\n🌸 JasminCSS installed! See JASMINCSS-GUIDE.md in node_modules/jasmincss for all available classes.\\n'"
   },
   "keywords": [
     "css",

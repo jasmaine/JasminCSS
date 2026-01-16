@@ -20,8 +20,9 @@ async function buildPackage() {
   // Build CLI and lib
   const entryPoints = [
     { in: 'src/index.js', out: 'index' },
-    { in: 'src/plugins/nextjs.js', out: 'plugin/nextjs' },
-    { in: 'src/plugins/vite.js', out: 'plugin/vite' }
+    { in: 'src/plugins/nextjs.js', out: 'plugins/nextjs' },
+    { in: 'src/plugins/vite.js', out: 'plugins/vite' },
+    { in: 'src/plugins/jasmin-loader.js', out: 'plugins/jasmin-loader' }
   ];
 
   // CommonJS build
@@ -123,6 +124,10 @@ export const templates: Record<string, Partial<JasminConfig>>;
   console.log('\nBuilding JavaScript components...');
   await buildBrowserJS();
 
+  // Build CDN runtime (JIT in browser)
+  console.log('\nBuilding CDN runtime...');
+  await buildCDNRuntime();
+
   console.log('\n✨ Build complete!\n');
 }
 
@@ -183,6 +188,41 @@ async function buildBrowserJS() {
 
   console.log(`  ✓ jasmin.js (${jsSize} KB)`);
   console.log(`  ✓ jasmin.min.js (${jsMinSize} KB)`);
+}
+
+async function buildCDNRuntime() {
+  const distDir = path.join(rootDir, 'dist');
+
+  // Build CDN runtime (IIFE format for browser)
+  await build({
+    entryPoints: [path.join(rootDir, 'src/cdn/jasmin-runtime.js')],
+    outfile: path.join(distDir, 'jasmin-runtime.js'),
+    bundle: true,
+    format: 'iife',
+    platform: 'browser',
+    target: 'es2020',
+    minify: false
+  });
+
+  // Minified version
+  await build({
+    entryPoints: [path.join(rootDir, 'src/cdn/jasmin-runtime.js')],
+    outfile: path.join(distDir, 'jasmin-runtime.min.js'),
+    bundle: true,
+    format: 'iife',
+    platform: 'browser',
+    target: 'es2020',
+    minify: true
+  });
+
+  const runtimeContent = fs.readFileSync(path.join(distDir, 'jasmin-runtime.js'), 'utf8');
+  const runtimeMinContent = fs.readFileSync(path.join(distDir, 'jasmin-runtime.min.js'), 'utf8');
+
+  const runtimeSize = (runtimeContent.length / 1024).toFixed(1);
+  const runtimeMinSize = (runtimeMinContent.length / 1024).toFixed(1);
+
+  console.log(`  ✓ jasmin-runtime.js (${runtimeSize} KB)`);
+  console.log(`  ✓ jasmin-runtime.min.js (${runtimeMinSize} KB)`);
 }
 
 buildPackage().catch(err => {

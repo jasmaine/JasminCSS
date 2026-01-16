@@ -44,7 +44,8 @@ export function generateUtilities(config, options = {}) {
     const generator = utilityGenerators[utilityName];
     if (!generator) continue;
 
-    const { css, classes } = generator(config);
+    // Pass options to generators that support it (e.g., colors for arbitrary values)
+    const { css, classes } = generator(config, { usedClasses, includeAll });
 
     // Filter classes based on usage
     if (!includeAll && usedClasses) {

@@ -93,11 +93,11 @@ export async function scanForUsedClasses(cwd, patterns) {
       for (const pattern of classPatterns) {
         let match;
         while ((match = pattern.exec(content)) !== null) {
-          // Extract individual classes
+          // Extract individual classes (including arbitrary value syntax like bg-[#fff])
           const classes = match[1]
             .split(/\s+/)
             .map(c => c.trim())
-            .filter(c => c && !c.includes('{') && !c.includes('$'));
+            .filter(c => c && !c.includes('${') && !c.startsWith('{'));
 
           classes.forEach(cls => usedClasses.add(cls));
         }

@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JasminCSS - Components Showcase</title>
+  <link rel="stylesheet" href="../../dist/jasmin.css">
+</head>
+<body>
+  <nav class="navbar shadow-sm sticky top-0 z-50">
+    <span class="navbar-brand text-primary">JasminCSS</span>
+    <button class="btn btn-sm btn-ghost" onclick="document.documentElement.classList.toggle('dark')">
+      <span class="icon icon-sun"></span>
+    </button>
+  </nav>
+
+  <div class="container mx-auto px-4 py-6">
+
+    <!-- 1. BUTTONS -->
+    <section class="py-6 border-b">
+      <h2 class="text-lg font-bold mb-4">Buttons</h2>
+      <div class="mb-4">
+        <div class="text-xs text-muted uppercase tracking-wide mb-2">Solid</div>
+        <div class="flex flex-wrap gap-2">
+          <button class="btn btn-primary">Primary</button>
+          <button class="btn btn-secondary">Secondary</button>
+          <button class="btn btn-success">Success</button>
+          <button class="btn btn-warning">Warning</button>
+          <button class="btn btn-error">Error</button>
+        </div>
+      </div>
+      <div class="mb-4">
+        <div class="text-xs text-muted uppercase tracking-wide mb-2">Outline</div>
+        <div class="flex flex-wrap gap-2">
+          <button class="btn btn-outline-primary">Primary</button>
+          <button class="btn btn-outline-secondary">Secondary</button>
+          <button class="btn btn-outline-success">Success</button>
+        </div>
+      </div>
+      <div class="mb-4">
+        <div class="text-xs text-muted uppercase tracking-wide mb-2">Sizes</div>
+        <div class="flex flex-wrap items-center gap-2">
+          <button class="btn btn-primary btn-sm">Small</button>
+          <button class="btn btn-primary">Default</button>
+          <button class="btn btn-primary btn-lg">Large</button>
+        </div>
+      </div>
+      <div>
+        <div class="text-xs text-muted uppercase tracking-wide mb-2">With Icons</div>
+        <div class="flex flex-wrap gap-2">
+          <button class="btn btn-primary"><span class="icon icon-add"></span> Add New</button>
+          <button class="btn btn-secondary"><span class="icon icon-software-download"></span> Download</button>
+          <button class="btn btn-outline-primary"><span class="icon icon-share"></span> Share</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. FORMS -->
+    <section class="py-6 border-b">
+      <h2 class="text-lg font-bold mb-4">Forms</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <div class="form-group">
+            <label class="form-label">Text Input</label>
+            <input type="text" class="form-control" placeholder="Enter text...">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Select</label>
+            <select class="form-control">
+              <option>Choose option...</option>
+              <option>Option 1</option>
+              <option>Option 2</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Textarea</label>
+            <textarea class="form-control" rows="2" placeholder="Message..."></textarea>
+          </div>
+        </div>
+        <div>
+          <div class="form-group">
+            <label class="form-label">Checkbox</label>
+            <label class="form-check">
+              <input type="checkbox" class="form-check-input" checked>
+              <span class="form-check-label">Checked option</span>
+            </label>
+            <label class="form-check">
+              <input type="checkbox" class="form-check-input">
+              <span class="form-check-label">Unchecked option</span>
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Radio</label>
+            <label class="form-check">
+              <input type="radio" class="form-check-input" name="r1" checked>
+              <span class="form-check-label">Option A</span>
+            </label>
+            <label class="form-check">
+              <input type="radio" class="form-check-input" name="r1">
+              <span class="form-check-label">Option B</span>
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Switch</label>
+            <label class="form-switch">
+              <input type="checkbox" class="form-switch-input" checked>
+              <span class="form-check-label">Enabled</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. CARDS -->
+    <section class="py-6 border-b">
+      <h2 class="text-lg font-bold mb-4">Cards</h2>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="card">
+          <div class="card-header">Header</div>
+          <div class="card-body">
+            <h5 class="font-semibold">Card Title</h5>
+            <p class="text-sm text-muted mt-1">Card description text.</p>
+          </div>
+          <div class="card-footer">Footer</div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="font-semibold">Simple Card</h5>
+            <p class="text-sm text-muted mt-1">Body only content.</p>
+            <button class="btn btn-sm btn-primary mt-3">Action</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body flex items-center gap-3">
+            <div class="avatar bg-primary text-white">JD</div>
+            <div>
+              <div class="font-semibold">John Doe</div>
+              <div class="text-sm text-muted">Developer</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. NAVIGATION -->
+    <section class="py-6 border-b">
+      <h2 class="text-lg font-bold mb-4">Navigation</h2>
+      <nav class="navbar border rounded-lg">
+        <a href="#" class="navbar-brand">Brand</a>
+        <ul class="navbar-nav">
+          <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Products</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </section>
+
+    <!-- 5. ALERTS -->
+    <section class="py-6 border-b">
+      <h2 class="text-lg font-bold mb-4">Alerts</h2>
+      <div class="space-y-3">
+        <div class="alert alert-info"><span class="icon icon-info"></span> Info alert message.</div>
+        <div class="alert alert-success"><span class="icon icon-check"></span> Success! Operation completed.</div>
+        <div class="alert alert-warning"><span class="icon icon-danger"></span> Warning! Check your input.</div>
+        <div class="alert alert-error"><span class="icon icon-close"></span> Error! Something failed.</div>
+      </div>
+    </section>
+
+    <!-- 6. BADGES -->
+    <section class="py-6 border-b">
+      <h2 class="text-lg font-bold mb-4">Badges</h2>
+      <div class="flex flex-wrap gap-2">
+        <span class="badge badge-primary">Primary</span>
+        <span class="badge badge-secondary">Secondary</span>
+        <span class="badge badge-success">Success</span>
+        <span class="badge badge-warning">Warning</span>
+        <span class="badge badge-error">Error</span>
+        <span class="badge badge-info">Info</span>
+      </div>
+    </section>
+
+    <!-- 7. AVATARS -->
+    <section class="py-6 border-b">
+      <h2 class="text-lg font-bold mb-4">Avatars</h2>
+      <div class="flex items-end gap-3">
+        <div class="avatar avatar-sm bg-primary text-white">S</div>
+        <div class="avatar bg-secondary text-white">M</div>
+        <div class="avatar avatar-lg bg-success text-white">L</div>
+        <div class="avatar avatar-xl bg-warning text-white">XL</div>
+      </div>
+    </section>
+
+    <!-- 8. PROGRESS -->
+    <section class="py-6 border-b">
+      <h2 class="text-lg font-bold mb-4">Progress</h2>
+      <div class="space-y-3">
+        <div class="progress"><div class="progress-bar w-1/4"></div></div>
+        <div class="progress"><div class="progress-bar progress-bar-success w-1/2"></div></div>
+        <div class="progress"><div class="progress-bar progress-bar-warning w-3/4"></div></div>
+      </div>
+    </section>
+
+    <!-- 9. SPINNER -->
+    <section class="py-6 border-b">
+      <h2 class="text-lg font-bold mb-4">Spinners</h2>
+      <div class="flex gap-4">
+        <div class="spinner"></div>
+        <div class="spinner spinner-primary"></div>
+        <div class="spinner spinner-success"></div>
+      </div>
+    </section>
+
+    <!-- 10. TABLE -->
+    <section class="py-6 border-b">
+      <h2 class="text-lg font-bold mb-4">Table</h2>
+      <div class="card overflow-hidden">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-medium">Alice Johnson</td>
+              <td class="text-muted">alice@example.com</td>
+              <td>Admin</td>
+              <td><span class="badge badge-success">Active</span></td>
+            </tr>
+            <tr>
+              <td class="font-medium">Bob Smith</td>
+              <td class="text-muted">bob@example.com</td>
+              <td>Editor</td>
+              <td><span class="badge badge-warning">Pending</span></td>
+            </tr>
+            <tr>
+              <td class="font-medium">Carol Davis</td>
+              <td class="text-muted">carol@example.com</td>
+              <td>Viewer</td>
+              <td><span class="badge badge-error">Inactive</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 11. DROPDOWN -->
+    <section class="py-6 border-b">
+      <h2 class="text-lg font-bold mb-4">Dropdown</h2>
+      <div class="dropdown" data-dropdown>
+        <button class="btn btn-primary dropdown-toggle">Dropdown</button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Action 1</a>
+          <a class="dropdown-item" href="#">Action 2</a>
+          <a class="dropdown-item" href="#">Action 3</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12. ACCORDION -->
+    <section class="py-6 border-b">
+      <h2 class="text-lg font-bold mb-4">Accordion</h2>
+      <div class="accordion" data-accordion>
+        <div class="accordion-item">
+          <button class="accordion-trigger">Section One</button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <div class="accordion-body-inner">Content for the first section. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger">Section Two</button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <div class="accordion-body-inner">Content for the second section. Sed do eiusmod tempor incididunt ut labore.</div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger">Section Three</button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <div class="accordion-body-inner">Content for the third section. Ut enim ad minim veniam, quis nostrud.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13. MODAL -->
+    <section class="py-6 border-b">
+      <h2 class="text-lg font-bold mb-4">Modal</h2>
+      <button class="btn btn-primary" data-modal-target="#modal1">Open Modal</button>
+      <div class="modal" id="modal1" data-modal>
+        <div class="modal-dialog modal-borderless">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Modal Title</h5>
+              <button class="modal-close" data-modal-close>&times;</button>
+            </div>
+            <div class="modal-body">
+              <p>This is the modal body content. You can put any content here including forms, text, images, or other components.</p>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-ghost" data-modal-close>Cancel</button>
+              <button class="btn btn-primary" data-modal-close>Save Changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 14. TABS -->
+    <section class="py-6 border-b">
+      <h2 class="text-lg font-bold mb-4">Tabs</h2>
+      <div data-tabs>
+        <div class="tabs">
+          <button class="tab active" data-tab="tab1">Tab 1</button>
+          <button class="tab" data-tab="tab2">Tab 2</button>
+          <button class="tab" data-tab="tab3">Tab 3</button>
+        </div>
+        <div class="tab-content p-4 border border-t-0 rounded-b-lg">
+          <div class="tab-pane active" id="tab1">Content for Tab 1</div>
+          <div class="tab-pane" id="tab2">Content for Tab 2</div>
+          <div class="tab-pane" id="tab3">Content for Tab 3</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 15. TOOLTIP -->
+    <section class="py-6 border-b">
+      <h2 class="text-lg font-bold mb-4">Tooltips</h2>
+      <div class="flex gap-4">
+        <button class="btn btn-secondary" data-tooltip="Hello tooltip!">Hover me</button>
+        <button class="btn btn-secondary" data-tooltip="Another tip">Hover here</button>
+      </div>
+    </section>
+
+    <!-- 16. CHIPS -->
+    <section class="py-6 border-b">
+      <h2 class="text-lg font-bold mb-4">Chips</h2>
+      <div class="flex flex-wrap gap-2">
+        <span class="chip">Default</span>
+        <span class="chip chip-primary">Primary</span>
+        <span class="chip chip-secondary">Secondary</span>
+        <span class="chip chip-success">Success</span>
+      </div>
+    </section>
+
+    <!-- 17. STEPPER -->
+    <section class="py-6 border-b">
+      <h2 class="text-lg font-bold mb-4">Stepper</h2>
+      <div class="stepper stepper-horizontal">
+        <div class="stepper-item completed">
+          <div class="stepper-indicator"><span class="stepper-number">1</span></div>
+          <div class="stepper-label">Account</div>
+        </div>
+        <div class="stepper-item completed">
+          <div class="stepper-indicator"><span class="stepper-number">2</span></div>
+          <div class="stepper-label">Profile</div>
+        </div>
+        <div class="stepper-item active">
+          <div class="stepper-indicator"><span class="stepper-number">3</span></div>
+          <div class="stepper-label">Payment</div>
+        </div>
+        <div class="stepper-item">
+          <div class="stepper-indicator"><span class="stepper-number">4</span></div>
+          <div class="stepper-label">Confirm</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 18. TIMELINE -->
+    <section class="py-6 border-b">
+      <h2 class="text-lg font-bold mb-4">Timeline</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="font-semibold">Event One</div>
+            <div class="text-sm text-muted">Jan 15, 2024</div>
+            <p class="text-sm mt-1">Description of the first event.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="font-semibold">Event Two</div>
+            <div class="text-sm text-muted">Jan 20, 2024</div>
+            <p class="text-sm mt-1">Description of the second event.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="font-semibold">Event Three</div>
+            <div class="text-sm text-muted">Jan 25, 2024</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 19. RATING -->
+    <section class="py-6 border-b">
+      <h2 class="text-lg font-bold mb-4">Rating</h2>
+      <div class="rating">
+        <button class="rating-item active"></button>
+        <button class="rating-item active"></button>
+        <button class="rating-item active"></button>
+        <button class="rating-item active"></button>
+        <button class="rating-item"></button>
+        <span class="ml-2 text-sm text-muted">4.0</span>
+      </div>
+    </section>
+
+    <!-- 20. OFFCANVAS -->
+    <section class="py-6 border-b">
+      <h2 class="text-lg font-bold mb-4">Offcanvas</h2>
+      <button class="btn btn-primary" data-offcanvas-target="#offcanvas1">Open Sidebar</button>
+      <div class="offcanvas offcanvas-start" id="offcanvas1" data-offcanvas>
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title">Sidebar</h5>
+          <button class="btn btn-ghost btn-sm" data-offcanvas-close>&times;</button>
+        </div>
+        <div class="offcanvas-body">
+          <p>Offcanvas sidebar content.</p>
+          <ul class="mt-4 space-y-2">
+            <li><a href="#" class="text-primary">Menu Item 1</a></li>
+            <li><a href="#" class="text-primary">Menu Item 2</a></li>
+            <li><a href="#" class="text-primary">Menu Item 3</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 21. CAROUSEL -->
+    <section class="py-6 border-b">
+      <h2 class="text-lg font-bold mb-4">Carousel</h2>
+      <div class="carousel max-w-xl rounded-lg overflow-hidden" data-carousel>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="bg-primary p-12 text-center">
+              <h3 class="text-white text-xl font-bold mb-2">Welcome to JasminCSS</h3>
+              <p class="text-white opacity-80">Modern CSS framework for modern web apps</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="bg-success p-12 text-center">
+              <h3 class="text-white text-xl font-bold mb-2">26 Components</h3>
+              <p class="text-white opacity-80">Everything you need to build beautiful UIs</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="bg-secondary p-12 text-center">
+              <h3 class="text-white text-xl font-bold mb-2">707 Icons</h3>
+              <p class="text-white opacity-80">Comprehensive icon library included</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control carousel-control-prev"></button>
+        <button class="carousel-control carousel-control-next"></button>
+      </div>
+    </section>
+
+    <!-- 22. SKELETON -->
+    <section class="py-6 border-b">
+      <h2 class="text-lg font-bold mb-4">Skeleton</h2>
+      <div class="card p-4 max-w-xs">
+        <div class="flex gap-3 items-center mb-4">
+          <div class="skeleton skeleton-avatar"></div>
+          <div class="flex-1">
+            <div class="skeleton skeleton-text w-3/4 mb-2"></div>
+            <div class="skeleton skeleton-text w-1/2"></div>
+          </div>
+        </div>
+        <div class="skeleton skeleton-text mb-2"></div>
+        <div class="skeleton skeleton-text mb-2"></div>
+        <div class="skeleton skeleton-text w-2/3"></div>
+      </div>
+    </section>
+
+    <!-- 23. UPLOAD -->
+    <section class="py-6 border-b">
+      <h2 class="text-lg font-bold mb-4">Upload</h2>
+      <div class="upload-zone max-w-md">
+        <div class="upload-icon"></div>
+        <p class="text-sm font-medium">Drop files here or click to upload</p>
+        <p class="text-xs text-muted mt-1">PNG, JPG, PDF up to 10MB</p>
+        <input type="file" class="sr-only" id="file-upload">
+      </div>
+    </section>
+
+    <!-- 24. POPOVER -->
+    <section class="py-6 border-b">
+      <h2 class="text-lg font-bold mb-4">Popover</h2>
+      <div class="flex gap-4">
+        <button class="btn btn-secondary" data-popover data-popover-title="Popover Title" data-popover-content="This is some helpful information inside a popover." data-popover-trigger="hover" data-popover-placement="bottom">Hover me</button>
+        <button class="btn btn-secondary" data-popover data-popover-title="Click Popover" data-popover-content="Click anywhere outside to close." data-popover-trigger="click" data-popover-placement="top">Click me</button>
+      </div>
+    </section>
+
+    <!-- 25. COMMAND PALETTE -->
+    <section class="py-6 border-b">
+      <h2 class="text-lg font-bold mb-4">Command Palette</h2>
+      <button class="btn btn-secondary" id="cmd-palette-btn">
+        <span class="icon icon-search icon-sm"></span> Open Command Palette (Ctrl+K)
+      </button>
+      <div class="command-palette-overlay" id="cmd-overlay"></div>
+      <div class="command-palette" id="cmd-palette">
+        <div class="command-palette-header">
+          <div class="command-palette-icon"></div>
+          <input type="text" class="command-palette-input" placeholder="Type a command or search...">
+        </div>
+        <div class="command-palette-body">
+          <div class="command-palette-group">
+            <div class="command-palette-group-title">Actions</div>
+            <div class="command-palette-item">
+              <span class="icon icon-file icon-sm"></span> New File
+              <span class="command-palette-kbd">Ctrl+N</span>
+            </div>
+            <div class="command-palette-item">
+              <span class="icon icon-folder icon-sm"></span> Open Folder
+              <span class="command-palette-kbd">Ctrl+O</span>
+            </div>
+            <div class="command-palette-item">
+              <span class="icon icon-search icon-sm"></span> Search
+              <span class="command-palette-kbd">Ctrl+F</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 26. DATEPICKER -->
+    <section class="py-6 border-b">
+      <h2 class="text-lg font-bold mb-4">Datepicker</h2>
+      <div class="datepicker max-w-xs" data-datepicker>
+        <input type="text" class="datepicker-input" placeholder="Select date" readonly>
+        <div class="datepicker-icon"></div>
+      </div>
+    </section>
+
+    <!-- 27. TIMEPICKER -->
+    <section class="py-6 border-b">
+      <h2 class="text-lg font-bold mb-4">Timepicker</h2>
+      <div class="timepicker max-w-xs" data-timepicker>
+        <input type="text" class="timepicker-input" placeholder="Select time" readonly>
+        <div class="timepicker-icon"></div>
+      </div>
+    </section>
+
+    <!-- 28. ICONS -->
+    <section class="py-6">
+      <h2 class="text-lg font-bold mb-4">Icons (707 available)</h2>
+      <p class="text-sm text-muted mb-4">Use: <code class="bg-muted px-1 rounded">icon icon-{name}</code></p>
+      <div class="grid grid-cols-6 md:grid-cols-12 gap-3">
+        <div class="flex flex-col items-center"><span class="icon icon-home"></span><small class="text-xs text-muted">home</small></div>
+        <div class="flex flex-col items-center"><span class="icon icon-user"></span><small class="text-xs text-muted">user</small></div>
+        <div class="flex flex-col items-center"><span class="icon icon-mail"></span><small class="text-xs text-muted">mail</small></div>
+        <div class="flex flex-col items-center"><span class="icon icon-bell"></span><small class="text-xs text-muted">bell</small></div>
+        <div class="flex flex-col items-center"><span class="icon icon-search"></span><small class="text-xs text-muted">search</small></div>
+        <div class="flex flex-col items-center"><span class="icon icon-menu"></span><small class="text-xs text-muted">menu</small></div>
+        <div class="flex flex-col items-center"><span class="icon icon-check"></span><small class="text-xs text-muted">check</small></div>
+        <div class="flex flex-col items-center"><span class="icon icon-close"></span><small class="text-xs text-muted">close</small></div>
+        <div class="flex flex-col items-center"><span class="icon icon-add"></span><small class="text-xs text-muted">add</small></div>
+        <div class="flex flex-col items-center"><span class="icon icon-trash"></span><small class="text-xs text-muted">trash</small></div>
+        <div class="flex flex-col items-center"><span class="icon icon-heart"></span><small class="text-xs text-muted">heart</small></div>
+        <div class="flex flex-col items-center"><span class="icon icon-awards"></span><small class="text-xs text-muted">awards</small></div>
+      </div>
+      <p class="mt-4"><a href="icons.html" class="text-primary text-sm">View all 707 icons</a></p>
+    </section>
+
+  </div>
+
+  <footer class="bg-gray-900 text-white py-6 text-center text-sm">
+    JasminCSS v1.0.0 - 26 Components - 707 Icons - 14 Utilities
+  </footer>
+
+  <script src="../../dist/jasmin.js" data-jasmin-auto-init></script>
+  <script>
+    // Command Palette toggle
+    const cmdBtn = document.getElementById('cmd-palette-btn');
+    const cmdPalette = document.getElementById('cmd-palette');
+    const cmdOverlay = document.getElementById('cmd-overlay');
+    function toggleCmd() {
+      cmdPalette.classList.toggle('show');
+      cmdOverlay.classList.toggle('show');
+      if (cmdPalette.classList.contains('show')) {
+        cmdPalette.querySelector('input').focus();
+      }
+    }
+    cmdBtn.addEventListener('click', toggleCmd);
+    cmdOverlay.addEventListener('click', toggleCmd);
+    document.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        toggleCmd();
+      }
+      if (e.key === 'Escape' && cmdPalette.classList.contains('show')) {
+        toggleCmd();
+      }
+    });
+  </script>
+</body>
+</html>

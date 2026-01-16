@@ -119,6 +119,10 @@ export const templates: Record<string, Partial<JasminConfig>>;
   console.log('Building CSS library...');
   await buildCSS();
 
+  // Build browser JavaScript bundle
+  console.log('\nBuilding JavaScript components...');
+  await buildBrowserJS();
+
   console.log('\n✨ Build complete!\n');
 }
 
@@ -142,6 +146,43 @@ async function buildCSS() {
 
   console.log(`  ✓ jasmin.css (${cssSize} KB)`);
   console.log(`  ✓ jasmin.min.css (${minSize} KB)`);
+}
+
+async function buildBrowserJS() {
+  const distDir = path.join(rootDir, 'dist');
+
+  // Bundle browser JS components (IIFE format for browser)
+  await build({
+    entryPoints: [path.join(rootDir, 'src/js/index.js')],
+    outfile: path.join(distDir, 'jasmin.js'),
+    bundle: true,
+    format: 'iife',
+    globalName: 'Jasmin',
+    platform: 'browser',
+    target: 'es2020',
+    minify: false
+  });
+
+  // Minified version
+  await build({
+    entryPoints: [path.join(rootDir, 'src/js/index.js')],
+    outfile: path.join(distDir, 'jasmin.min.js'),
+    bundle: true,
+    format: 'iife',
+    globalName: 'Jasmin',
+    platform: 'browser',
+    target: 'es2020',
+    minify: true
+  });
+
+  const jsContent = fs.readFileSync(path.join(distDir, 'jasmin.js'), 'utf8');
+  const jsMinContent = fs.readFileSync(path.join(distDir, 'jasmin.min.js'), 'utf8');
+
+  const jsSize = (jsContent.length / 1024).toFixed(1);
+  const jsMinSize = (jsMinContent.length / 1024).toFixed(1);
+
+  console.log(`  ✓ jasmin.js (${jsSize} KB)`);
+  console.log(`  ✓ jasmin.min.js (${jsMinSize} KB)`);
 }
 
 buildPackage().catch(err => {

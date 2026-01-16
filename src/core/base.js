@@ -148,26 +148,26 @@ ${customProps}
 ${darkMode ? `/* Dark Mode */
 @media (prefers-color-scheme: dark) {
   :root {
-    --j-bg: #09090b;
-    --j-bg-subtle: #18181b;
-    --j-bg-muted: #27272a;
-    --j-text: #fafafa;
-    --j-text-subtle: #a1a1aa;
-    --j-text-muted: #71717a;
-    --j-border: #27272a;
-    --j-border-subtle: #18181b;
+    --j-bg: #111827;
+    --j-bg-subtle: #1f2937;
+    --j-bg-muted: #374151;
+    --j-text: #f9fafb;
+    --j-text-subtle: #9ca3af;
+    --j-text-muted: #6b7280;
+    --j-border: #374151;
+    --j-border-subtle: #1f2937;
   }
 }
 
 .dark {
-  --j-bg: #09090b;
-  --j-bg-subtle: #18181b;
-  --j-bg-muted: #27272a;
-  --j-text: #fafafa;
-  --j-text-subtle: #a1a1aa;
-  --j-text-muted: #71717a;
-  --j-border: #27272a;
-  --j-border-subtle: #18181b;
+  --j-bg: #111827;
+  --j-bg-subtle: #1f2937;
+  --j-bg-muted: #374151;
+  --j-text: #f9fafb;
+  --j-text-subtle: #9ca3af;
+  --j-text-muted: #6b7280;
+  --j-border: #374151;
+  --j-border-subtle: #1f2937;
 }` : ''}
 
 /* Base Typography */

@@ -6,7 +6,7 @@
 class Dropdown {
   constructor(element, options = {}) {
     this.element = element;
-    this.toggle = element.querySelector('[data-dropdown-toggle]') || element.querySelector('.dropdown-toggle');
+    this.toggleBtn = element.querySelector('[data-dropdown-toggle]') || element.querySelector('.dropdown-toggle');
     this.menu = element.querySelector('[data-dropdown-menu]') || element.querySelector('.dropdown-menu');
     this.isOpen = false;
     this.options = {
@@ -16,14 +16,14 @@ class Dropdown {
       ...options
     };
 
-    if (!this.toggle || !this.menu) return;
+    if (!this.toggleBtn || !this.menu) return;
 
     this.init();
   }
 
   init() {
     // Toggle click
-    this.toggle.addEventListener('click', (e) => {
+    this.toggleBtn.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
       this.toggle();
@@ -46,7 +46,7 @@ class Dropdown {
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && this.isOpen) {
           this.close();
-          this.toggle.focus();
+          this.toggleBtn.focus();
         }
       });
     }
@@ -59,8 +59,8 @@ class Dropdown {
     }
 
     // Set ARIA attributes
-    this.toggle.setAttribute('aria-haspopup', 'true');
-    this.toggle.setAttribute('aria-expanded', 'false');
+    this.toggleBtn.setAttribute('aria-haspopup', 'true');
+    this.toggleBtn.setAttribute('aria-expanded', 'false');
     this.menu.setAttribute('role', 'menu');
     this.menu.querySelectorAll('.dropdown-item').forEach(item => {
       item.setAttribute('role', 'menuitem');
@@ -75,7 +75,7 @@ class Dropdown {
     this.isOpen = true;
     this.element.classList.add('open');
     this.menu.classList.add('show');
-    this.toggle.setAttribute('aria-expanded', 'true');
+    this.toggleBtn.setAttribute('aria-expanded', 'true');
 
     // Focus first item
     const firstItem = this.menu.querySelector('.dropdown-item:not([disabled])');
@@ -89,7 +89,7 @@ class Dropdown {
     this.isOpen = false;
     this.element.classList.remove('open');
     this.menu.classList.remove('show');
-    this.toggle.setAttribute('aria-expanded', 'false');
+    this.toggleBtn.setAttribute('aria-expanded', 'false');
 
     // Dispatch event
     this.element.dispatchEvent(new CustomEvent('dropdown:close', { detail: { dropdown: this } }));
@@ -130,7 +130,7 @@ class Dropdown {
 
       case 'Enter':
       case ' ':
-        if (document.activeElement === this.toggle) {
+        if (document.activeElement === this.toggleBtn) {
           e.preventDefault();
           this.toggle();
         }
@@ -144,8 +144,8 @@ class Dropdown {
 
   destroy() {
     this.close();
-    this.toggle.removeAttribute('aria-haspopup');
-    this.toggle.removeAttribute('aria-expanded');
+    this.toggleBtn.removeAttribute('aria-haspopup');
+    this.toggleBtn.removeAttribute('aria-expanded');
   }
 
   // Static method to initialize all dropdowns

@@ -63,6 +63,67 @@ export function generateTimepickerStyles(config) {
   transform: translateY(0);
 }
 
+/* Timepicker Content (spinner style) */
+.timepicker-content {
+  padding: 0;
+}
+
+.timepicker-header {
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  text-align: center;
+  border-bottom: 1px solid var(--j-border);
+}
+
+.timepicker-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.timepicker-body .timepicker-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: visible;
+  border: none;
+  height: auto;
+}
+
+.timepicker-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2rem;
+  background: transparent;
+  border: 1px solid var(--j-border);
+  border-radius: var(--j-radius-default, 0.375rem);
+  color: var(--j-text);
+  cursor: pointer;
+  transition: all 150ms ease-in-out;
+}
+
+.timepicker-btn:hover {
+  background-color: var(--j-bg-subtle);
+  border-color: var(--j-primary);
+}
+
+.timepicker-body .timepicker-display {
+  width: 3rem;
+  padding: 0.5rem;
+  margin: 0.25rem 0;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  background-color: var(--j-bg-subtle);
+  border: 1px solid var(--j-border);
+  border-radius: var(--j-radius-default, 0.375rem);
+  color: var(--j-text);
+}
+
 /* Time Columns */
 .timepicker-columns {
   display: flex;

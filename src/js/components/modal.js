@@ -60,7 +60,7 @@ class Modal {
 
     // Show modal
     this.element.classList.add('show');
-    this.element.style.display = 'block';
+    this.element.style.display = 'flex';
     document.body.classList.add('modal-open');
     document.body.style.overflow = 'hidden';
 

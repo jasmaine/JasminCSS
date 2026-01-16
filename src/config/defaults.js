@@ -14,13 +14,13 @@ export const defaultConfig = {
   // Branding configuration
   branding: {
     colors: {
-      primary: '#6366f1',      // Indigo
-      secondary: '#ec4899',    // Pink
+      primary: '#2563eb',      // Blue
+      secondary: '#64748b',    // Slate
       accent: '#14b8a6',       // Teal
       success: '#22c55e',      // Green
       warning: '#f59e0b',      // Amber
       error: '#ef4444',        // Red
-      info: '#3b82f6'          // Blue
+      info: '#0ea5e9'          // Sky Blue
     },
     typography: {
       fontFamily: 'Inter',
@@ -51,11 +51,21 @@ export const defaultConfig = {
     }
   },
 
-  // Selected components
-  components: ['buttons', 'cards', 'forms', 'navigation', 'alerts', 'badges'],
+  // Selected components (all 26)
+  components: [
+    'buttons', 'cards', 'forms', 'navigation', 'alerts', 'badges',
+    'modals', 'tables', 'avatars', 'tooltips', 'progress', 'skeleton',
+    'dropdown', 'accordion', 'chips', 'offcanvas', 'carousel', 'stepper',
+    'timeline', 'rating', 'upload', 'spinner', 'popover', 'command-palette',
+    'datepicker', 'timepicker'
+  ],
 
-  // Selected utilities
-  utilities: ['layout', 'spacing', 'typography', 'colors', 'effects', 'animations'],
+  // Selected utilities (all 14)
+  utilities: [
+    'layout', 'spacing', 'typography', 'colors', 'effects', 'animations',
+    'transforms', 'filters', 'icons', 'background', 'columns', 'scroll',
+    'svg', 'accessibility'
+  ],
 
   // Extended colors palette
   colors: {

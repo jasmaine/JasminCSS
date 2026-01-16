@@ -12,6 +12,8 @@ import Tooltip from './components/tooltip.js';
 import Popover from './components/popover.js';
 import Carousel from './components/carousel.js';
 import { Alert, Toast } from './components/alert.js';
+import Datepicker from './components/datepicker.js';
+import Timepicker from './components/timepicker.js';
 
 // Export individual components
 export {
@@ -24,7 +26,9 @@ export {
   Popover,
   Carousel,
   Alert,
-  Toast
+  Toast,
+  Datepicker,
+  Timepicker
 };
 
 /**
@@ -41,6 +45,8 @@ export function initAll() {
   Popover.initAll();
   Carousel.initAll();
   Alert.initAll();
+  Datepicker.initAll();
+  Timepicker.initAll();
 }
 
 /**
@@ -66,6 +72,8 @@ const Jasmin = {
   Carousel,
   Alert,
   Toast,
+  Datepicker,
+  Timepicker,
   initAll,
   autoInit,
   version: '1.0.0'

@@ -153,16 +153,17 @@ export function generateAccordionStyles(config) {
   border: none;
   border-radius: 0;
   gap: 0.5rem;
+  overflow: visible;
 }
 
 .accordion-bordered .accordion-item {
-  border: 1px solid var(--j-border);
+  border: 1px solid var(--j-border) !important;
   border-radius: var(--j-radius-lg, 0.5rem);
   overflow: hidden;
 }
 
 .accordion-bordered .accordion-item:last-child {
-  border-bottom: 1px solid var(--j-border);
+  border: 1px solid var(--j-border) !important;
 }
 
 /* Separated - Items have gap between them */

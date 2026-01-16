@@ -117,46 +117,46 @@ export function generateSpacingUtilities(config, options = {}) {
 
   // Padding
   Object.entries(spacing).forEach(([key, value]) => {
-    const safeName = key.replace('.', '\\.');
+    const safeName = key.replace(/\./g, '\\.');
 
     // All sides
-    classes.push({ name: `p-${safeName}`, css: `.p-${safeName} { padding: ${value}; }` });
+    classes.push({ name: `p-${key}`, css: `.p-${safeName} { padding: ${value}; }` });
 
     // Individual sides
-    classes.push({ name: `pt-${safeName}`, css: `.pt-${safeName} { padding-top: ${value}; }` });
-    classes.push({ name: `pr-${safeName}`, css: `.pr-${safeName} { padding-right: ${value}; }` });
-    classes.push({ name: `pb-${safeName}`, css: `.pb-${safeName} { padding-bottom: ${value}; }` });
-    classes.push({ name: `pl-${safeName}`, css: `.pl-${safeName} { padding-left: ${value}; }` });
+    classes.push({ name: `pt-${key}`, css: `.pt-${safeName} { padding-top: ${value}; }` });
+    classes.push({ name: `pr-${key}`, css: `.pr-${safeName} { padding-right: ${value}; }` });
+    classes.push({ name: `pb-${key}`, css: `.pb-${safeName} { padding-bottom: ${value}; }` });
+    classes.push({ name: `pl-${key}`, css: `.pl-${safeName} { padding-left: ${value}; }` });
 
     // Horizontal and vertical
-    classes.push({ name: `px-${safeName}`, css: `.px-${safeName} { padding-left: ${value}; padding-right: ${value}; }` });
-    classes.push({ name: `py-${safeName}`, css: `.py-${safeName} { padding-top: ${value}; padding-bottom: ${value}; }` });
+    classes.push({ name: `px-${key}`, css: `.px-${safeName} { padding-left: ${value}; padding-right: ${value}; }` });
+    classes.push({ name: `py-${key}`, css: `.py-${safeName} { padding-top: ${value}; padding-bottom: ${value}; }` });
 
     // Logical properties
-    classes.push({ name: `ps-${safeName}`, css: `.ps-${safeName} { padding-inline-start: ${value}; }` });
-    classes.push({ name: `pe-${safeName}`, css: `.pe-${safeName} { padding-inline-end: ${value}; }` });
+    classes.push({ name: `ps-${key}`, css: `.ps-${safeName} { padding-inline-start: ${value}; }` });
+    classes.push({ name: `pe-${key}`, css: `.pe-${safeName} { padding-inline-end: ${value}; }` });
   });
 
   // Margin (positive values)
   Object.entries(spacing).forEach(([key, value]) => {
-    const safeName = key.replace('.', '\\.');
+    const safeName = key.replace(/\./g, '\\.');
 
     // All sides
-    classes.push({ name: `m-${safeName}`, css: `.m-${safeName} { margin: ${value}; }` });
+    classes.push({ name: `m-${key}`, css: `.m-${safeName} { margin: ${value}; }` });
 
     // Individual sides
-    classes.push({ name: `mt-${safeName}`, css: `.mt-${safeName} { margin-top: ${value}; }` });
-    classes.push({ name: `mr-${safeName}`, css: `.mr-${safeName} { margin-right: ${value}; }` });
-    classes.push({ name: `mb-${safeName}`, css: `.mb-${safeName} { margin-bottom: ${value}; }` });
-    classes.push({ name: `ml-${safeName}`, css: `.ml-${safeName} { margin-left: ${value}; }` });
+    classes.push({ name: `mt-${key}`, css: `.mt-${safeName} { margin-top: ${value}; }` });
+    classes.push({ name: `mr-${key}`, css: `.mr-${safeName} { margin-right: ${value}; }` });
+    classes.push({ name: `mb-${key}`, css: `.mb-${safeName} { margin-bottom: ${value}; }` });
+    classes.push({ name: `ml-${key}`, css: `.ml-${safeName} { margin-left: ${value}; }` });
 
     // Horizontal and vertical
-    classes.push({ name: `mx-${safeName}`, css: `.mx-${safeName} { margin-left: ${value}; margin-right: ${value}; }` });
-    classes.push({ name: `my-${safeName}`, css: `.my-${safeName} { margin-top: ${value}; margin-bottom: ${value}; }` });
+    classes.push({ name: `mx-${key}`, css: `.mx-${safeName} { margin-left: ${value}; margin-right: ${value}; }` });
+    classes.push({ name: `my-${key}`, css: `.my-${safeName} { margin-top: ${value}; margin-bottom: ${value}; }` });
 
     // Logical properties
-    classes.push({ name: `ms-${safeName}`, css: `.ms-${safeName} { margin-inline-start: ${value}; }` });
-    classes.push({ name: `me-${safeName}`, css: `.me-${safeName} { margin-inline-end: ${value}; }` });
+    classes.push({ name: `ms-${key}`, css: `.ms-${safeName} { margin-inline-start: ${value}; }` });
+    classes.push({ name: `me-${key}`, css: `.me-${safeName} { margin-inline-end: ${value}; }` });
   });
 
   // Margin auto
@@ -174,43 +174,43 @@ export function generateSpacingUtilities(config, options = {}) {
   Object.entries(spacing).forEach(([key, value]) => {
     if (key === '0' || key === 'px') return; // Skip 0 and px for negative
 
-    const safeName = key.replace('.', '\\.');
+    const safeName = key.replace(/\./g, '\\.');
 
     // All sides
-    classes.push({ name: `-m-${safeName}`, css: `.-m-${safeName} { margin: -${value}; }` });
+    classes.push({ name: `-m-${key}`, css: `.-m-${safeName} { margin: -${value}; }` });
 
     // Individual sides
-    classes.push({ name: `-mt-${safeName}`, css: `.-mt-${safeName} { margin-top: -${value}; }` });
-    classes.push({ name: `-mr-${safeName}`, css: `.-mr-${safeName} { margin-right: -${value}; }` });
-    classes.push({ name: `-mb-${safeName}`, css: `.-mb-${safeName} { margin-bottom: -${value}; }` });
-    classes.push({ name: `-ml-${safeName}`, css: `.-ml-${safeName} { margin-left: -${value}; }` });
+    classes.push({ name: `-mt-${key}`, css: `.-mt-${safeName} { margin-top: -${value}; }` });
+    classes.push({ name: `-mr-${key}`, css: `.-mr-${safeName} { margin-right: -${value}; }` });
+    classes.push({ name: `-mb-${key}`, css: `.-mb-${safeName} { margin-bottom: -${value}; }` });
+    classes.push({ name: `-ml-${key}`, css: `.-ml-${safeName} { margin-left: -${value}; }` });
 
     // Horizontal and vertical
-    classes.push({ name: `-mx-${safeName}`, css: `.-mx-${safeName} { margin-left: -${value}; margin-right: -${value}; }` });
-    classes.push({ name: `-my-${safeName}`, css: `.-my-${safeName} { margin-top: -${value}; margin-bottom: -${value}; }` });
+    classes.push({ name: `-mx-${key}`, css: `.-mx-${safeName} { margin-left: -${value}; margin-right: -${value}; }` });
+    classes.push({ name: `-my-${key}`, css: `.-my-${safeName} { margin-top: -${value}; margin-bottom: -${value}; }` });
   });
 
   // Space Between (for flex/grid children)
   Object.entries(spacing).forEach(([key, value]) => {
-    const safeName = key.replace('.', '\\.');
+    const safeName = key.replace(/\./g, '\\.');
 
     classes.push({
-      name: `space-x-${safeName}`,
+      name: `space-x-${key}`,
       css: `.space-x-${safeName} > :not([hidden]) ~ :not([hidden]) { margin-left: ${value}; }`
     });
     classes.push({
-      name: `space-y-${safeName}`,
+      name: `space-y-${key}`,
       css: `.space-y-${safeName} > :not([hidden]) ~ :not([hidden]) { margin-top: ${value}; }`
     });
 
     // Negative space
     if (key !== '0' && key !== 'px') {
       classes.push({
-        name: `-space-x-${safeName}`,
+        name: `-space-x-${key}`,
         css: `.-space-x-${safeName} > :not([hidden]) ~ :not([hidden]) { margin-left: -${value}; }`
       });
       classes.push({
-        name: `-space-y-${safeName}`,
+        name: `-space-y-${key}`,
         css: `.-space-y-${safeName} > :not([hidden]) ~ :not([hidden]) { margin-top: -${value}; }`
       });
     }

@@ -2,7 +2,7 @@
 
 > **Complete reference of all available utility classes and components**
 >
-> Generated automatically from JasminCSS v1.0.5
+> Generated automatically from JasminCSS v1.0.6
 
 ## Table of Contents
 
@@ -387,7 +387,7 @@
 | `aspect-auto` | `aspect-ratio: auto;` |
 | `aspect-square` | `aspect-ratio: 1 / 1;` |
 | `aspect-video` | `aspect-ratio: 16 / 9;` |
-| `aspect-4\/3` | `aspect-ratio: 4 / 3;` |
+| `aspect-4/3` | `aspect-ratio: 4 / 3;` |
 | `visible` | `visibility: visible;` |
 | `invisible` | `visibility: hidden;` |
 | `collapse` | `visibility: collapse;` |

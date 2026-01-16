@@ -46,23 +46,23 @@ export function generateTransformUtilities(config) {
   };
 
   Object.entries(translateValues).forEach(([key, value]) => {
-    const safeName = key.replace('/', '\\/').replace('.', '\\.');
-    classes.push({ name: `translate-x-${safeName}`, css: `.translate-x-${safeName} { --j-translate-x: ${value}; transform: translateX(${value}); }` });
-    classes.push({ name: `translate-y-${safeName}`, css: `.translate-y-${safeName} { --j-translate-y: ${value}; transform: translateY(${value}); }` });
+    const safeName = key.replace(/\//g, '\\/').replace(/\./g, '\\.');
+    classes.push({ name: `translate-x-${key}`, css: `.translate-x-${safeName} { --j-translate-x: ${value}; transform: translateX(${value}); }` });
+    classes.push({ name: `translate-y-${key}`, css: `.translate-y-${safeName} { --j-translate-y: ${value}; transform: translateY(${value}); }` });
 
     // Negative values
     if (!key.includes('/')) {
-      classes.push({ name: `-translate-x-${safeName}`, css: `.-translate-x-${safeName} { --j-translate-x: -${value}; transform: translateX(-${value}); }` });
-      classes.push({ name: `-translate-y-${safeName}`, css: `.-translate-y-${safeName} { --j-translate-y: -${value}; transform: translateY(-${value}); }` });
+      classes.push({ name: `-translate-x-${key}`, css: `.-translate-x-${safeName} { --j-translate-x: -${value}; transform: translateX(-${value}); }` });
+      classes.push({ name: `-translate-y-${key}`, css: `.-translate-y-${safeName} { --j-translate-y: -${value}; transform: translateY(-${value}); }` });
     }
   });
 
   // Negative percentage translations
   ['1/2', '1/3', '2/3', '1/4', '3/4', 'full'].forEach(key => {
     const value = translateValues[key];
-    const safeName = key.replace('/', '\\/');
-    classes.push({ name: `-translate-x-${safeName}`, css: `.-translate-x-${safeName} { --j-translate-x: -${value}; transform: translateX(-${value}); }` });
-    classes.push({ name: `-translate-y-${safeName}`, css: `.-translate-y-${safeName} { --j-translate-y: -${value}; transform: translateY(-${value}); }` });
+    const safeName = key.replace(/\//g, '\\/');
+    classes.push({ name: `-translate-x-${key}`, css: `.-translate-x-${safeName} { --j-translate-x: -${value}; transform: translateX(-${value}); }` });
+    classes.push({ name: `-translate-y-${key}`, css: `.-translate-y-${safeName} { --j-translate-y: -${value}; transform: translateY(-${value}); }` });
   });
 
   // Skew

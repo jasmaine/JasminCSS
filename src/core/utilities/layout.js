@@ -90,10 +90,10 @@ export function generateLayoutUtilities(config) {
   // Gap
   const spacing = config.spacing || {};
   Object.entries(spacing).forEach(([key, value]) => {
-    const safeName = key.replace('.', '\\.');
-    classes.push({ name: `gap-${safeName}`, css: `.gap-${safeName} { gap: ${value}; }` });
-    classes.push({ name: `gap-x-${safeName}`, css: `.gap-x-${safeName} { column-gap: ${value}; }` });
-    classes.push({ name: `gap-y-${safeName}`, css: `.gap-y-${safeName} { row-gap: ${value}; }` });
+    const safeName = key.replace(/\./g, '\\.');
+    classes.push({ name: `gap-${key}`, css: `.gap-${safeName} { gap: ${value}; }` });
+    classes.push({ name: `gap-x-${key}`, css: `.gap-x-${safeName} { column-gap: ${value}; }` });
+    classes.push({ name: `gap-y-${key}`, css: `.gap-y-${safeName} { row-gap: ${value}; }` });
   });
 
   // Grid Template Columns
@@ -165,22 +165,22 @@ export function generateLayoutUtilities(config) {
   // Inset (top, right, bottom, left)
   const insetValues = { '0': '0', 'auto': 'auto', 'full': '100%', '1/2': '50%', '1/3': '33.333333%', '2/3': '66.666667%', '1/4': '25%', '3/4': '75%' };
   Object.entries({ ...spacing, ...insetValues }).forEach(([key, value]) => {
-    const safeName = key.replace('/', '\\/').replace('.', '\\.');
-    classes.push({ name: `inset-${safeName}`, css: `.inset-${safeName} { inset: ${value}; }` });
-    classes.push({ name: `inset-x-${safeName}`, css: `.inset-x-${safeName} { left: ${value}; right: ${value}; }` });
-    classes.push({ name: `inset-y-${safeName}`, css: `.inset-y-${safeName} { top: ${value}; bottom: ${value}; }` });
-    classes.push({ name: `top-${safeName}`, css: `.top-${safeName} { top: ${value}; }` });
-    classes.push({ name: `right-${safeName}`, css: `.right-${safeName} { right: ${value}; }` });
-    classes.push({ name: `bottom-${safeName}`, css: `.bottom-${safeName} { bottom: ${value}; }` });
-    classes.push({ name: `left-${safeName}`, css: `.left-${safeName} { left: ${value}; }` });
+    const safeName = key.replace(/\//g, '\\/').replace(/\./g, '\\.');
+    classes.push({ name: `inset-${key}`, css: `.inset-${safeName} { inset: ${value}; }` });
+    classes.push({ name: `inset-x-${key}`, css: `.inset-x-${safeName} { left: ${value}; right: ${value}; }` });
+    classes.push({ name: `inset-y-${key}`, css: `.inset-y-${safeName} { top: ${value}; bottom: ${value}; }` });
+    classes.push({ name: `top-${key}`, css: `.top-${safeName} { top: ${value}; }` });
+    classes.push({ name: `right-${key}`, css: `.right-${safeName} { right: ${value}; }` });
+    classes.push({ name: `bottom-${key}`, css: `.bottom-${safeName} { bottom: ${value}; }` });
+    classes.push({ name: `left-${key}`, css: `.left-${safeName} { left: ${value}; }` });
 
     // Negative values
     if (key !== 'auto' && key !== 'full' && !key.includes('/')) {
-      classes.push({ name: `-inset-${safeName}`, css: `.-inset-${safeName} { inset: -${value}; }` });
-      classes.push({ name: `-top-${safeName}`, css: `.-top-${safeName} { top: -${value}; }` });
-      classes.push({ name: `-right-${safeName}`, css: `.-right-${safeName} { right: -${value}; }` });
-      classes.push({ name: `-bottom-${safeName}`, css: `.-bottom-${safeName} { bottom: -${value}; }` });
-      classes.push({ name: `-left-${safeName}`, css: `.-left-${safeName} { left: -${value}; }` });
+      classes.push({ name: `-inset-${key}`, css: `.-inset-${safeName} { inset: -${value}; }` });
+      classes.push({ name: `-top-${key}`, css: `.-top-${safeName} { top: -${value}; }` });
+      classes.push({ name: `-right-${key}`, css: `.-right-${safeName} { right: -${value}; }` });
+      classes.push({ name: `-bottom-${key}`, css: `.-bottom-${safeName} { bottom: -${value}; }` });
+      classes.push({ name: `-left-${key}`, css: `.-left-${safeName} { left: -${value}; }` });
     }
   });
 
@@ -218,8 +218,8 @@ export function generateLayoutUtilities(config) {
     '1/12': '8.333333%', '5/12': '41.666667%', '7/12': '58.333333%', '11/12': '91.666667%'
   };
   Object.entries({ ...spacing, ...widthSizes }).forEach(([key, value]) => {
-    const safeName = key.replace('/', '\\/').replace('.', '\\.');
-    classes.push({ name: `w-${safeName}`, css: `.w-${safeName} { width: ${value}; }` });
+    const safeName = key.replace(/\//g, '\\/').replace(/\./g, '\\.');
+    classes.push({ name: `w-${key}`, css: `.w-${safeName} { width: ${value}; }` });
   });
 
   // Height
@@ -233,8 +233,8 @@ export function generateLayoutUtilities(config) {
     '1/6': '16.666667%', '5/6': '83.333333%'
   };
   Object.entries({ ...spacing, ...heightSizes }).forEach(([key, value]) => {
-    const safeName = key.replace('/', '\\/').replace('.', '\\.');
-    classes.push({ name: `h-${safeName}`, css: `.h-${safeName} { height: ${value}; }` });
+    const safeName = key.replace(/\//g, '\\/').replace(/\./g, '\\.');
+    classes.push({ name: `h-${key}`, css: `.h-${safeName} { height: ${value}; }` });
   });
 
   // Min/Max Width
@@ -251,16 +251,16 @@ export function generateLayoutUtilities(config) {
     classes.push({ name: `max-h-${key}`, css: `.max-h-${key} { max-height: ${value}; }` });
   });
   Object.entries(spacing).forEach(([key, value]) => {
-    const safeName = key.replace('.', '\\.');
-    classes.push({ name: `min-h-${safeName}`, css: `.min-h-${safeName} { min-height: ${value}; }` });
-    classes.push({ name: `max-h-${safeName}`, css: `.max-h-${safeName} { max-height: ${value}; }` });
+    const safeName = key.replace(/\./g, '\\.');
+    classes.push({ name: `min-h-${key}`, css: `.min-h-${safeName} { min-height: ${value}; }` });
+    classes.push({ name: `max-h-${key}`, css: `.max-h-${safeName} { max-height: ${value}; }` });
   });
 
   // Size (width and height)
   Object.entries({ ...spacing, ...widthSizes }).forEach(([key, value]) => {
     if (key !== 'screen' && key !== 'svw' && key !== 'lvw' && key !== 'dvw') {
-      const safeName = key.replace('/', '\\/').replace('.', '\\.');
-      classes.push({ name: `size-${safeName}`, css: `.size-${safeName} { width: ${value}; height: ${value}; }` });
+      const safeName = key.replace(/\//g, '\\/').replace(/\./g, '\\.');
+      classes.push({ name: `size-${key}`, css: `.size-${safeName} { width: ${value}; height: ${value}; }` });
     }
   });
 
@@ -285,7 +285,7 @@ export function generateLayoutUtilities(config) {
   classes.push({ name: 'aspect-auto', css: '.aspect-auto { aspect-ratio: auto; }' });
   classes.push({ name: 'aspect-square', css: '.aspect-square { aspect-ratio: 1 / 1; }' });
   classes.push({ name: 'aspect-video', css: '.aspect-video { aspect-ratio: 16 / 9; }' });
-  classes.push({ name: 'aspect-4\\/3', css: '.aspect-4\\/3 { aspect-ratio: 4 / 3; }' });
+  classes.push({ name: 'aspect-4/3', css: '.aspect-4\\/3 { aspect-ratio: 4 / 3; }' });
 
   // Visibility
   classes.push({ name: 'visible', css: '.visible { visibility: visible; }' });

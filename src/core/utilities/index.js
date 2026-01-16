@@ -99,16 +99,18 @@ function generateResponsiveUtilities(config, selectedUtilities, usedClasses, inc
 
       for (const cls of classes) {
         const escapedBp = escapeCssSelector(bp);
-        // Escape dots in class names for valid CSS selectors
-        const escapedName = cls.name.replace(/\./g, '\\.');
+        // Escape dots and slashes in class names for valid CSS selectors
+        const escapedName = cls.name.replace(/\//g, '\\/').replace(/\./g, '\\.');
         const responsiveClassName = `${escapedBp}\\:${escapedName}`;
         const shouldInclude = includeAll ||
           !usedClasses ||
           usedClasses.has(`${bp}:${cls.name}`);
 
         if (shouldInclude) {
+          // Match the escaped CSS selector (backslashes need to be escaped for regex)
+          const regexSafeName = escapedName.replace(/\\/g, '\\\\');
           bpClasses.push(cls.css.replace(
-            new RegExp(`\\.${escapeRegex(cls.name)}`, 'g'),
+            new RegExp(`\\.${regexSafeName}(?=[^-\\w])`, 'g'),
             `.${responsiveClassName}`
           ));
         }
@@ -155,7 +157,7 @@ function generateStateUtilities(config, selectedUtilities, usedClasses, includeA
         if (cls.css.includes('@media') || cls.css.includes('@keyframes')) continue;
 
         // Escape dots in class names for valid CSS selectors
-        const escapedName = cls.name.replace(/\./g, '\\.');
+        const escapedName = cls.name.replace(/\//g, '\\/').replace(/\./g, '\\.');
         const stateClassName = `${state}\\:${escapedName}`;
         const shouldInclude = includeAll ||
           !usedClasses ||
@@ -189,7 +191,7 @@ function generateStateUtilities(config, selectedUtilities, usedClasses, includeA
     for (const cls of classes) {
       if (cls.css.includes('@media') || cls.css.includes('@keyframes')) continue;
 
-      const escapedName = cls.name.replace(/\./g, '\\.');
+      const escapedName = cls.name.replace(/\//g, '\\/').replace(/\./g, '\\.');
       const stateClassName = `group-hover\\:${escapedName}`;
       const shouldInclude = includeAll ||
         !usedClasses ||
@@ -220,7 +222,7 @@ function generateStateUtilities(config, selectedUtilities, usedClasses, includeA
       for (const cls of classes) {
         if (cls.css.includes('@media') || cls.css.includes('@keyframes')) continue;
 
-        const escapedName = cls.name.replace(/\./g, '\\.');
+        const escapedName = cls.name.replace(/\//g, '\\/').replace(/\./g, '\\.');
         const darkClassName = `dark\\:${escapedName}`;
         const shouldInclude = includeAll ||
           !usedClasses ||

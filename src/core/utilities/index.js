@@ -99,7 +99,9 @@ function generateResponsiveUtilities(config, selectedUtilities, usedClasses, inc
 
       for (const cls of classes) {
         const escapedBp = escapeCssSelector(bp);
-        const responsiveClassName = `${escapedBp}\\:${cls.name}`;
+        // Escape dots in class names for valid CSS selectors
+        const escapedName = cls.name.replace(/\./g, '\\.');
+        const responsiveClassName = `${escapedBp}\\:${escapedName}`;
         const shouldInclude = includeAll ||
           !usedClasses ||
           usedClasses.has(`${bp}:${cls.name}`);
@@ -152,7 +154,9 @@ function generateStateUtilities(config, selectedUtilities, usedClasses, includeA
         // Skip classes that contain media queries or complex selectors
         if (cls.css.includes('@media') || cls.css.includes('@keyframes')) continue;
 
-        const stateClassName = `${state}\\:${cls.name}`;
+        // Escape dots in class names for valid CSS selectors
+        const escapedName = cls.name.replace(/\./g, '\\.');
+        const stateClassName = `${state}\\:${escapedName}`;
         const shouldInclude = includeAll ||
           !usedClasses ||
           usedClasses.has(`${state}:${cls.name}`);
@@ -185,7 +189,8 @@ function generateStateUtilities(config, selectedUtilities, usedClasses, includeA
     for (const cls of classes) {
       if (cls.css.includes('@media') || cls.css.includes('@keyframes')) continue;
 
-      const stateClassName = `group-hover\\:${cls.name}`;
+      const escapedName = cls.name.replace(/\./g, '\\.');
+      const stateClassName = `group-hover\\:${escapedName}`;
       const shouldInclude = includeAll ||
         !usedClasses ||
         usedClasses.has(`group-hover:${cls.name}`);
@@ -215,7 +220,8 @@ function generateStateUtilities(config, selectedUtilities, usedClasses, includeA
       for (const cls of classes) {
         if (cls.css.includes('@media') || cls.css.includes('@keyframes')) continue;
 
-        const darkClassName = `dark\\:${cls.name}`;
+        const escapedName = cls.name.replace(/\./g, '\\.');
+        const darkClassName = `dark\\:${escapedName}`;
         const shouldInclude = includeAll ||
           !usedClasses ||
           usedClasses.has(`dark:${cls.name}`);

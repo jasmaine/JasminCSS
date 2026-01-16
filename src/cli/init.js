@@ -186,8 +186,14 @@ export async function initCommand(options) {
           { name: 'Colors', value: 'colors', checked: true },
           { name: 'Effects (shadows, blur)', value: 'effects', checked: true },
           { name: 'Animations', value: 'animations', checked: true },
-          { name: 'Transforms', value: 'transforms', checked: false },
-          { name: 'Filters', value: 'filters', checked: false }
+          { name: 'Transforms', value: 'transforms', checked: true },
+          { name: 'Filters', value: 'filters', checked: true },
+          { name: 'Icons (720 built-in icons)', value: 'icons', checked: true },
+          { name: 'Background', value: 'background', checked: true },
+          { name: 'Columns', value: 'columns', checked: true },
+          { name: 'Scroll', value: 'scroll', checked: true },
+          { name: 'SVG', value: 'svg', checked: true },
+          { name: 'Accessibility', value: 'accessibility', checked: true }
         ]
       }
     ]);

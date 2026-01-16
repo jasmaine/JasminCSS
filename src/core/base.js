@@ -59,6 +59,14 @@ a {
 
 button, [role="button"] {
   cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: none;
+}
+
+button:focus {
+  outline: none;
 }
 
 :disabled {

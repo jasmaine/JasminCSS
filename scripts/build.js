@@ -21,8 +21,7 @@ async function buildPackage() {
   const entryPoints = [
     { in: 'src/index.js', out: 'index' },
     { in: 'src/plugins/nextjs.js', out: 'plugins/nextjs' },
-    { in: 'src/plugins/vite.js', out: 'plugins/vite' },
-    { in: 'src/plugins/jasmin-loader.js', out: 'plugins/jasmin-loader' }
+    { in: 'src/plugins/vite.js', out: 'plugins/vite' }
   ];
 
   // CommonJS build
@@ -47,6 +46,17 @@ async function buildPackage() {
     target: 'node18',
     external: ['chokidar', 'commander', 'fast-glob', 'picocolors', 'postcss', 'cssnano', 'inquirer'],
     outExtension: { '.js': '.mjs' }
+  });
+
+  // Build loader separately as .cjs (webpack loaders need CommonJS)
+  await build({
+    entryPoints: [path.join(rootDir, 'src/plugins/jasmin-loader.cjs')],
+    outfile: path.join(distDir, 'plugins/jasmin-loader.cjs'),
+    bundle: true,
+    format: 'cjs',
+    platform: 'node',
+    target: 'node18',
+    external: ['chokidar', 'commander', 'fast-glob', 'picocolors', 'postcss', 'cssnano', 'inquirer']
   });
 
   // Generate TypeScript declarations

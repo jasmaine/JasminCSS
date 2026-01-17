@@ -1,24 +1,31 @@
-// JasminCSS Webpack Loader for JIT compilation
-import path from 'path';
-import { scanForUsedClasses, compileCSS } from '../core/compiler.js';
-import { loadConfig, resolveConfig } from '../config/loader.js';
-import { defaultConfig } from '../config/defaults.js';
+// JasminCSS Webpack Loader for JIT compilation (CommonJS for webpack compatibility)
+const path = require('path');
 
 // Cache for compiled CSS
 const cssCache = new Map();
 
-export default async function jasminLoader(source) {
+module.exports = async function jasminLoader(source) {
   const callback = this.async();
   const options = this.getOptions() || {};
   const { dev = false, projectDir = process.cwd() } = options;
 
   try {
+    // Dynamic import for ESM modules
+    const { scanForUsedClasses, compileCSS } = await import('../core/compiler.js');
+    const { loadConfig, resolveConfig } = await import('../config/loader.js');
+    const { defaultConfig } = await import('../config/defaults.js');
+
     // Try to load user's config, fall back to defaults
     let config = defaultConfig;
     const configPath = path.join(projectDir, 'jasmin.config.js');
 
+    // Use file URL for ESM import
+    const fileUrl = 'file://' + configPath;
+    const cacheBuster = `?t=${Date.now()}`;
+
     try {
-      config = await loadConfig(configPath);
+      const userConfig = await import(fileUrl + cacheBuster);
+      config = userConfig.default || userConfig;
     } catch (e) {
       // Use default config if no user config found
     }
@@ -62,4 +69,4 @@ export default async function jasminLoader(source) {
   } catch (error) {
     callback(error);
   }
-}
+};

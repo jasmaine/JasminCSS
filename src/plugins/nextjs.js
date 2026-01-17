@@ -49,7 +49,7 @@ export default function withJasminCSS(nextConfig = {}) {
             ...getDefaultCssLoaders(cssRule, isServer),
             {
               // Our custom JIT loader
-              loader: path.resolve(currentDir, 'jasmin-loader.js'),
+              loader: path.resolve(currentDir, 'jasmin-loader.cjs'),
               options: {
                 dev,
                 projectDir: dir

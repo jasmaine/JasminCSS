@@ -2,7 +2,7 @@
 
 > **Complete reference of all available utility classes and components**
 >
-> Generated automatically from JasminCSS v1.0.15
+> Generated automatically from JasminCSS v1.0.16
 
 ## Table of Contents
 
@@ -2425,4 +2425,4 @@ export default withJasminCSS({});
 
 **Total utility classes: 5,956**
 
-Generated on 2026-01-16
+Generated on 2026-01-17
